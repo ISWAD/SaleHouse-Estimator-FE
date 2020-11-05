@@ -2,18 +2,34 @@ import React from 'react';
 import MobNavButton from '../MobNavButton/MobNavButton.js';
 import './MobNav.css'
 
-const MobNav = () => {
+let navMenu;
+
+const MobNav = ({ user_loggedIn, pageIn, mobNavShow, onNavClick, onMobNavButtonClick }) => {
+
+  if (user_loggedIn) {
+    navMenu = ["Estimator", "My Account", "Logout"];
+  } else {
+    navMenu = ["Estimator", "Register", "Login"];
+  }
+
 	return(
 		<div className="navFrame">
-  			<MobNavButton />
-  			<div className = "mobNav shadow-2">
-    			<div className = "mobNavList">Mohammad</div>
-    			<div className = "mobNavList">Ali</div>
-    			<div className = "mobNavList">Mohammad</div>
-    			<div className = "mobNavList">Mohammad</div>
-    		</div>
+  			<MobNavButton onMobNavButtonClick = { onMobNavButtonClick }/>
+        {mobNavShow &&
+  			  <div className = "mobNav shadow-2">
+            {navMenu.map((item) => {
+              if (item === pageIn.trim()) {
+                return <div className = "mobNavList" style = {{ color: 'yellow' }} onClick = { onNavClick }> 
+                          {item} 
+                       </div>;
+          } else {
+                return <div className = "mobNavList" onClick = { onNavClick }> {item} </div>;
+          }
+        }) }
+    		  </div>
+        }
 		</div>
 	)
 }
 
-export default MobNav
+export default MobNav;

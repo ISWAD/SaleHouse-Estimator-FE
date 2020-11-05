@@ -1,9 +1,9 @@
 import React from 'react';
 import './MobNavButton.css';
 
-const MobNavButton = () => {
+const MobNavButton = ({ onMobNavButtonClick }) => {
 	return(
-		<div className ="ToggleDiv shadow-2">
+		<div className ="ToggleDiv shadow-2" onClick = { onMobNavButtonClick }>
 			<div className = "ToggleLine"></div>
 			<div className = "ToggleLine"></div>
 			<div className = "ToggleLine"></div>

@@ -39,7 +39,13 @@ if (Math.random() > 0.85) {
   });
 }
 
-const initialState = {width: 0, height: 0, user_loggedIn: false, pageIn: "Estimator"}
+const initialState = {
+                      width: 0, 
+                      height: 0, 
+                      user_loggedIn: false, 
+                      pageIn: "Estimator",
+                      mobNavShow: false
+                     }
 
 class App extends Component {
 
@@ -64,11 +70,18 @@ class App extends Component {
 
   onNavClick = (event) => {
     this.setState({pageIn: event.target.innerHTML});
-    let liMenues = document.getElementsByClassName('deskNavList')
-    for (let i = 0; i < liMenues.length; i++){
-      liMenues[i].style.color = "white";
+  }
+
+  onMobNavButtonClick = (event) => {
+    if (this.state.mobNavShow){
+      this.setState({mobNavShow: false});
+    } else{
+      this.setState({mobNavShow: true});
     }
-    event.target.style.color = "yellow";
+  }
+
+  onMobNavClick = (event) => {
+    this.setState({pageIn: event.target.innerHTML});
   }
 
   render() {
@@ -78,10 +91,20 @@ class App extends Component {
         <Frame>
           <Logo />
           {this.state.width >= 900 &&
-            <Nav user_loggedIn = { this.state.user_loggedIn } pageIn = { this.state.pageIn } onNavClick = { this.onNavClick }/>
+            <Nav 
+              user_loggedIn = { this.state.user_loggedIn } 
+              pageIn = { this.state.pageIn } 
+              onNavClick = { this.onNavClick }
+            />
           }
           {this.state.width < 900 &&
-            <MobNav />
+            <MobNav 
+              user_loggedIn = { this.state.user_loggedIn } 
+              pageIn = { this.state.pageIn } 
+              mobNavShow = { this.state.mobNavShow }
+              onNavClick = { this.onNavClick } 
+              onMobNavButtonClick = { this.onMobNavButtonClick }
+            />
           }
         </Frame>
       </div>
