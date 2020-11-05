@@ -1,0 +1,12 @@
+img{
+	opacity: 1;
+	border: solid 1px;
+	border-radius: 10%;
+	border-color: white;
+	opacity: 0.8;
+}
+
+.imgFrame{
+	display: flex;
+	width: auto;
+}

@@ -1,0 +1,7 @@
+.frame{
+	margin: 10px auto;
+	width: 95%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}

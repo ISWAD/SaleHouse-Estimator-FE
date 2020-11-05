@@ -1,0 +1,28 @@
+nav{
+	margin-top: 20px;
+	margin-right: 20px;
+}
+
+.deskNav{
+	display: flex;
+	flex-wrap: nowrap;
+	list-style-type: None;
+	text-align: center;
+}
+
+.deskNavList{
+	margin: 20px;
+	cursor: pointer;
+	width: 150px;
+	/*text-align: center;*/
+	/*background-color: #b0696924;
+	border: solid 1px;
+	border-radius: 5%;
+	*/padding: 10px;
+	color: white;
+	transition: all .2s ease-in-out;
+}
+
+.deskNavList:hover{
+	transform: scale(1.1);
+}

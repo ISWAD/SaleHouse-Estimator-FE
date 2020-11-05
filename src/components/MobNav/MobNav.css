@@ -1,0 +1,47 @@
+.navbar-dark .navbar-toggler {
+	border: solid 5px;
+	color: rgba(255,255,255,.5);
+	border-color: rgba(255,255,255,.7);
+	border-radius: 5%;
+}
+
+button{
+	margin-left: 40px;
+}
+
+.navFrame{
+	display: block;
+	width: 150px;
+	padding: 0;
+	margin-top: 30px;
+}
+
+.mobNavFrame{
+	margin: 0;
+	padding: 0;
+}
+
+.mobNav{
+	display: block;
+	list-style-type: None;
+	text-align: center;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.mobNavList{
+	display: block;
+	color: white;
+	margin: 10px auto;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.mobNavList:hover{
+	transform: scale(1.1);
+	color: yellow;
+}
+
