@@ -1,14 +1,11 @@
 import React from 'react';
+import MobNavButton from '../MobNavButton/MobNavButton.js';
 import './MobNav.css'
 
 const MobNav = () => {
 	return(
 		<div className="navFrame">
-  			<nav className="navbar navbar-dark mobNavFrame">
-    			<button className="navbar-toggler">
-      				<span className="navbar-toggler-icon"></span>
-    			</button>
-  			</nav>
+  			<MobNavButton />
   			<div className = "mobNav shadow-2">
     			<div className = "mobNavList">Mohammad</div>
     			<div className = "mobNavList">Ali</div>

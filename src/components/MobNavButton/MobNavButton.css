@@ -1,0 +1,24 @@
+.ToggleDiv{
+	width: 50px;
+	background-color: #743b3b85;
+	display: block;
+	padding: 2px;
+	margin: 5px;
+	border: solid 1px;
+	border-radius: 10%;
+	margin-left: 45px;
+	border-color: #743b3b85;
+	cursor: pointer;
+}
+
+.ToggleLine{
+	margin: 10px auto;
+	height: 2px;
+	display: block;
+	background-color: white;
+	opacity: 75%;
+	border: solid 1px;
+	border-color: white;
+	border-radius: 25%;
+
+}
