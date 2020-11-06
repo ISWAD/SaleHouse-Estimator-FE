@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Select, NativeSelect, InputLabel } from '@material-ui/core';
 import './Estimator.css';
 
 let estPages = [];
@@ -35,30 +34,17 @@ class Estimator extends React.Component {
           </div>
         </div>
 
-        <InputLabel htmlFor="select" className = "db fw6 lh-copy f5" style = {{ color: "white"}}>Age</InputLabel>
-        <Select 
-          id="select"
-          className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
-          style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto", textAlign: "left"}}
-          defaultValue = "10"
+        <label className = "db fw6 lh-copy f5" htmlFor = "cars"> Cars </label>
+        <select 
+          name="cars" 
+          id="cars"
+          className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
         >
-          <option 
-            value="10"
-            className="pa2 input-reset ba bg-transparent hover-bg-yellow hover-white w-100 shadow-2 f4"
-            style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "black", margin: "10px auto",
-                       textAlign: "center", width: "90%"}}
-          >
-          Ten
-          </option>
-          <option 
-            value="20"
-            className="pa2 input-reset ba bg-transparent hover-bg-yellow hover-white w-100 shadow-2 f4"
-            style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "black", margin: "10px auto",
-                       textAlign: "center", width: "90%"}}
-          >
-          Twenty
-          </option>
-        </Select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select> 
 
       </div>
     )
