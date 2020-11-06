@@ -4,6 +4,7 @@ import Frame from "./components/Frame/Frame.js";
 import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
 import MobNav from './components/MobNav/MobNav.js';
+import Register from './constructors/Register/Register.js';
 import './App.css'
 
 let config = {
@@ -42,7 +43,7 @@ if (Math.random() > 0.85) {
 const initialState = {
                       width: 0, 
                       height: 0, 
-                      user_loggedIn: false, 
+                      user_loggedIn: true, 
                       pageIn: "Estimator",
                       mobNavShow: false
                      }
@@ -70,6 +71,11 @@ class App extends Component {
 
   onNavClick = (event) => {
     this.setState({pageIn: event.target.innerHTML});
+    this.setState({mobNavShow: false});
+    if (event.target.innerHTML.trim() === "Logout"){
+      this.setState({user_loggedIn: false});
+      this.setState({pageIn: "Estimator"});
+    }
   }
 
   onMobNavButtonClick = (event) => {
@@ -80,13 +86,10 @@ class App extends Component {
     }
   }
 
-  onMobNavClick = (event) => {
-    this.setState({pageIn: event.target.innerHTML});
-  }
-
   render() {
     return(
       <div>
+      <div className = "HeadPart">
         <ParticlesBg type="custom" config={config} bg={true} />
         <Frame>
           <Logo />
@@ -107,6 +110,21 @@ class App extends Component {
             />
           }
         </Frame>
+      </div>
+      <div className = "MainPart shadow-2">
+      {this.state.pageIn.trim() === "Estimator" &&
+        <h1>Estimator</h1>
+      }
+      {this.state.pageIn.trim() === "Register" &&
+        <Register />
+      }
+      {this.state.pageIn.trim() === "Login" &&
+        <h1>Login</h1>
+      }
+      {this.state.pageIn.trim() === "My Account" &&
+        <h1>Account</h1>
+      }
+      </div>
       </div>
     )
   }

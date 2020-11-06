@@ -1,5 +1,14 @@
-div{
+.HeadPart{
 	width: 100%;
+	height: 250px;
 	display: flex;
 	justify-content: space-between;
+}
+
+.MainPart{
+	margin: 0 auto;
+	width: 500px;
+	padding: 20px;
+	text-align: center;
+	color: white;
 }

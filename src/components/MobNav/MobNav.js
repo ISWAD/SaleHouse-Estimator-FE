@@ -16,7 +16,7 @@ const MobNav = ({ user_loggedIn, pageIn, mobNavShow, onNavClick, onMobNavButtonC
 		<div className="navFrame">
   			<MobNavButton onMobNavButtonClick = { onMobNavButtonClick }/>
         {mobNavShow &&
-  			  <div className = "mobNav shadow-2">
+  			  <div className = "mobNav shadow-2 f4">
             {navMenu.map((item) => {
               if (item === pageIn.trim()) {
                 return <div className = "mobNavList" style = {{ color: 'yellow' }} onClick = { onNavClick }> 
