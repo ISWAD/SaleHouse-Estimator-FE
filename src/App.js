@@ -7,6 +7,7 @@ import MobNav from './components/MobNav/MobNav.js';
 import Register from './constructors/Register/Register.js';
 import Login from './constructors/Login/Login.js';
 import Account from './constructors/Account/Account.js';
+import Estimator from './constructors/Estimator/Estimator.js';
 import './App.css'
 
 let config = {
@@ -115,7 +116,7 @@ class App extends Component {
       </div>
       <div className = "MainPart shadow-2">
       {this.state.pageIn.trim() === "Estimator" &&
-        <h1>Estimator</h1>
+        <Estimator />
       }
       {this.state.pageIn.trim() === "Register" &&
         <Register />

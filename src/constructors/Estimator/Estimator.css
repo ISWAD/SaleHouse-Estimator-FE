@@ -1,0 +1,27 @@
+.Est_Arr{
+	display: flex;
+	width: 75px;
+	justify-content: space-between;
+	margin: 10px auto;
+}
+
+.Est_Arr > div{
+	cursor: pointer;
+}
+
+.pageNum{
+	display: flex;
+	list-style-type: none;
+	width: 90%;
+	flex-wrap: wrap;
+	text-align: center;
+	margin: 10px auto;
+	text-align: center;
+	justify-content: center;
+}
+
+.pageNum > li{
+	margin: 0 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
