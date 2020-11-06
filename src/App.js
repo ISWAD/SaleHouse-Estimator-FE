@@ -5,6 +5,8 @@ import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
 import MobNav from './components/MobNav/MobNav.js';
 import Register from './constructors/Register/Register.js';
+import Login from './constructors/Login/Login.js';
+import Account from './constructors/Account/Account.js';
 import './App.css'
 
 let config = {
@@ -43,7 +45,7 @@ if (Math.random() > 0.85) {
 const initialState = {
                       width: 0, 
                       height: 0, 
-                      user_loggedIn: true, 
+                      user_loggedIn: false, 
                       pageIn: "Estimator",
                       mobNavShow: false
                      }
@@ -119,10 +121,10 @@ class App extends Component {
         <Register />
       }
       {this.state.pageIn.trim() === "Login" &&
-        <h1>Login</h1>
+        <Login />
       }
       {this.state.pageIn.trim() === "My Account" &&
-        <h1>Account</h1>
+        <Account />
       }
       </div>
       </div>

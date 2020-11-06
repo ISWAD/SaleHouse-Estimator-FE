@@ -1,6 +1,6 @@
 .HeadPart{
 	width: 100%;
-	height: 250px;
+	height: 20%;
 	display: flex;
 	justify-content: space-between;
 }
@@ -11,4 +11,10 @@
 	padding: 20px;
 	text-align: center;
 	color: white;
+}
+
+@media only screen and (max-width: 500px) {
+	.MainPart{
+		width: 75%;
+	}
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './Register.css';
+// import './Register.css';
 
-class Register extends React.Component {
+class Login extends React.Component {
   
   constructor(){
     super();
@@ -12,26 +12,8 @@ class Register extends React.Component {
     return(
       <div>
         <h1 className = "f3 main_h1">
-        Register
+        Login
         </h1>
-
-        <label className = "db fw6 lh-copy f5" htmlFor = "firstname"> First Name </label>
-        <input 
-          type = "text" 
-          name = "firstname" 
-          id = "firstname" 
-          className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
-          style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-        />
-
-        <label className = "db fw6 lh-copy f5" htmlFor = "lastname"> Last Name </label>
-        <input 
-          type = "text" 
-          name = "lastname" 
-          id = "lastname" 
-          className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
-          style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-        />
 
         <label className = "db fw6 lh-copy f5" htmlFor = "email"> Email </label>
         <input 
@@ -54,7 +36,7 @@ class Register extends React.Component {
         <input
           className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple"
           type="submit"
-          value="Register"
+          value="Login"
           style = {{ width: "75%", color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
         /> 
       </div>
@@ -63,4 +45,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default Login;
