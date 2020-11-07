@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Forms = () => {
+const Forms = ({ estPageIn }) => {
 	return (
 		<div>
 			<div className = "FormContainer">
@@ -17,8 +17,8 @@ const Forms = () => {
         		<option value="audi">Audi</option>
     		</select>
     		</div>
-    		
     		</div>
+            <h1>Page Number {estPageIn}</h1>
     	</div>
     )
 }
