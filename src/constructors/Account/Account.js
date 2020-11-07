@@ -25,10 +25,10 @@ class Account extends React.Component {
         />
 
         <input
-          className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple"
+          className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple SubmitBtn"
           type="submit"
           value="Submit"
-          style = {{ width: "75%", color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
+          style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
         /> 
       </div>
     )

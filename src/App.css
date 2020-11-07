@@ -1,20 +1,19 @@
 .HeadPart{
 	width: 100%;
-	height: 20%;
 	display: flex;
 	justify-content: space-between;
 }
 
 .MainPart{
 	margin: 0 auto;
-	width: 50%;
+	width: 90%;
 	padding: 20px;
 	text-align: center;
 	color: white;
 }
 
-@media only screen and (max-width: 500px) {
-	.MainPart{
-		width: 75%;
+@media only screen and (min-width: 900px) {
+	.HeadPart{
+		height: 200px;
 	}
 }

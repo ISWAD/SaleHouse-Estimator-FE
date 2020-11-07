@@ -15,6 +15,8 @@ class Login extends React.Component {
         Login
         </h1>
 
+        <div className = "FormContainer">
+        <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "email"> Email </label>
         <input 
           type = "email" 
@@ -23,7 +25,9 @@ class Login extends React.Component {
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
         />
+        </div>
 
+        <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "password"> Password </label>
         <input 
           type = "password" 
@@ -32,12 +36,14 @@ class Login extends React.Component {
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
         />
+        </div>
+        </div>
 
         <input
-          className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple"
+          className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple SubmitBtn"
           type="submit"
           value="Login"
-          style = {{ width: "75%", color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
+          style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
         /> 
       </div>
     )

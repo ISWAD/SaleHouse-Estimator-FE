@@ -10,3 +10,27 @@
 .main_h1{
 	color: yellow;
 }
+
+.FormContainer{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.InputContainer{
+	display: block;
+	width: 40%;
+	margin: 10px auto;
+}
+
+.SubmitBtn{
+	width: 40%;
+}
+
+@media only screen and (max-width: 700px) {
+	.InputContainer{
+		width: 90%;
+		width: 75%;
+	}
+}
