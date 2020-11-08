@@ -16,8 +16,6 @@ const users = [
                 }
               ];
 
-let me = false;
-
 const initialState = {
                       firstName: '',
                       lastName: '',
@@ -26,7 +24,12 @@ const initialState = {
                       alertMsg: ''
                      }
 
+let emails = users.map((user) => {
+              return user.email;
+             })
+
 class Register extends React.Component {
+
   
   constructor(props){
     super(props);
@@ -35,38 +38,44 @@ class Register extends React.Component {
 
   onFNameChange = (event) => {
     this.setState({firstName: event.target.value});
+    this.props.removeAlert();
   }
 
   onLNameChange = (event) => {
     this.setState({lastName: event.target.value});
+    this.props.removeAlert();
   }
 
   onEmailChange = (event) => {
     this.setState({email: event.target.value});
-    let emails = users.map((user) => {
-                  return user.email;
-                 })
+    this.props.removeAlert();
     if (emails.includes(event.target.value)){
-      this.props.alertMsgChanged('Email address ' + event.target.value + ' has already been registered.');
-    } else {
-      this.props.alertMsgChanged('');
-      document.getElementsByClassName("Alert")[0].style.display = "none";
+      let newMsg = ["Email address " + event.target.value + " has already been registered."]
+      this.props.alertMsgChanged(newMsg);
+    } else{
+      this.props.removeAlert();
     }
   }
 
   onPasswordChange = (event) => {
     this.setState({password: event.target.value});
+    this.props.removeAlert();
   }
 
   onRegisterClick = () => {
-    let emails = users.map((user) => {
-                  return user.email;
-                 })
+    this.props.removeAlert();
+    let newMsg = []
     if (emails.includes(this.state.email)){
-      this.props.alertMsgChanged('Email address ' + this.state.email + ' has already been registered.');
+        newMsg.push('Email address ' + this.state.email + ' has already been registered.');
+      }
+    if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.email !== '' && this.state.password !== '') {
+      if (! emails.includes(this.state.email)){
+        this.props.onRouteChange('My Account');
+      }
     } else {
-      this.props.onRouteChange('My Account');
-    }
+        newMsg.push("Please fill all the required fields.");
+      }
+      this.props.alertMsgChanged(newMsg);
   }
 
   render() {

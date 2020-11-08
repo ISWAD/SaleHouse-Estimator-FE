@@ -50,7 +50,7 @@ const initialState = {
                       user_loggedIn: false, 
                       pageIn: "Estimator",
                       mobNavShow: false,
-                      alertMsg: ''
+                      alertMsg: []
                      }
 
 class App extends Component {
@@ -81,8 +81,7 @@ class App extends Component {
       this.setState({user_loggedIn: false});
       this.setState({pageIn: "Estimator"});
     }
-    document.getElementsByClassName("Alert")[0].style.display = "none";
-    this.setState({alertMsg: ''})
+    this.removeAlert();
   }
 
   onMobNavButtonClick = (event) => {
@@ -105,9 +104,16 @@ class App extends Component {
     this.setState({user_loggedIn: false});
   }
 
-  alertMsgChanged = (msg) => {
-    document.getElementsByClassName("Alert")[0].style.display = "block";
-    this.setState({alertMsg: msg});
+  alertMsgChanged = (msgs) => {
+    let curMsgs = [];
+    for (let i = 0; i < msgs.length; i++){
+      curMsgs.push(msgs[i]);
+    }
+    this.setState({alertMsg: curMsgs})
+  }
+
+  removeAlert = () => {
+    this.setState({alertMsg: []});
   }
 
   render() {
@@ -136,18 +142,20 @@ class App extends Component {
         </Frame>
       </div>
       <div className = "MainPart shadow-2">
-      <Alert alertMsg = { this.state.alertMsg }/>
       {this.state.pageIn.trim() === "Estimator" &&
         <Estimator alertMsg = { this.state.alertMsg }/>
       }
       {this.state.pageIn.trim() === "Register" &&
-        <Register onRouteChange = { this.onRouteChange } alertMsgChanged = { this.alertMsgChanged }/>
+        <Register onRouteChange = { this.onRouteChange } alertMsgChanged = { this.alertMsgChanged } removeAlert = { this.removeAlert }/>
       }
       {this.state.pageIn.trim() === "Login" &&
         <Login />
       }
       {this.state.pageIn.trim() === "My Account" &&
         <Account />
+      }
+      {this.state.alertMsg.length > 0 &&
+      <Alert alertMsg = { this.state.alertMsg }/>
       }
       </div>
       </div>

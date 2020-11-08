@@ -3,9 +3,9 @@ import './Alert.css';
 
 const Alert = ({ alertMsg }) => {
 	return (
-		<h1 className = "f5 Alert pa3 shadow-2">
-        	{alertMsg}
-        </h1>
+		alertMsg.map((msg, idx) => {
+			return <h1  className = "f5 Alert pa3 shadow-2 Alert" key = { idx }> { msg } </h1>
+		})
 	)
 }
 
