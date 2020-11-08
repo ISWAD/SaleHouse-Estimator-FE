@@ -2,6 +2,7 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	height: 250px;
 }
 
 .MainPart{
@@ -10,10 +11,25 @@
 	padding: 20px;
 	text-align: center;
 	color: white;
+	height: 520px;
 }
 
-@media only screen and (min-width: 900px) {
-	.HeadPart{
-		height: 200px;
+
+@media only screen and (min-width: 700px) {
+	.MainPart{
+		height: 360px;
 	}
+}
+
+@media only screen and (min-height: 1000px) {
+	.HeadPart{
+		height: 25vh;
+	}
+	.MainPart{
+		height: 50vh;
+	}
+	.Footer{
+		height: 20vh;
+	}
+
 }

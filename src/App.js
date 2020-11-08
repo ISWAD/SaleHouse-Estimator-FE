@@ -5,6 +5,7 @@ import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
 import MobNav from './components/MobNav/MobNav.js';
 import Alert from './components/Alert/Alert.js';
+import Footer from './components/Footer/Footer.js';
 import Register from './constructors/Register/Register.js';
 import Login from './constructors/Login/Login.js';
 import Account from './constructors/Account/Account.js';
@@ -141,7 +142,10 @@ class App extends Component {
           }
         </Frame>
       </div>
-      <div className = "MainPart shadow-2">
+      {this.state.alertMsg.length > 0 &&
+      <Alert alertMsg = { this.state.alertMsg }/>
+      }
+      <div className = "MainPart">
       {this.state.pageIn.trim() === "Estimator" &&
         <Estimator alertMsg = { this.state.alertMsg }/>
       }
@@ -164,10 +168,8 @@ class App extends Component {
       {this.state.pageIn.trim() === "My Account" &&
         <Account />
       }
-      {this.state.alertMsg.length > 0 &&
-      <Alert alertMsg = { this.state.alertMsg }/>
-      }
       </div>
+      <Footer />
       </div>
     )
   }

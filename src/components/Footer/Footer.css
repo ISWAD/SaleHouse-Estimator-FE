@@ -1,0 +1,32 @@
+.Footer{
+	margin: 20px auto;
+	width: 90%;
+	text-align: center;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	justify-content: wrap;
+}
+
+.Footer > div > ul{
+	list-style-type: none;
+}
+
+.Footer > div > ul > li{
+	margin: 10px;
+}
+
+.CopyRight{
+	margin-top: 50px;
+}
+
+@media only screen and (max-width: 900px) {
+	.Footer{
+		display: block;
+		text-align: center;
+	}
+	.CopyRight{
+		margin-top: 10px;
+	}
+}

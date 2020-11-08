@@ -1,3 +1,6 @@
 .Alert{
 	color: yellow;
+	width: 90%;
+	margin: 10px auto;
+	text-align: center;
 }
