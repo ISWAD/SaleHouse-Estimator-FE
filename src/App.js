@@ -4,11 +4,12 @@ import Frame from "./components/Frame/Frame.js";
 import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
 import MobNav from './components/MobNav/MobNav.js';
+import Alert from './components/Alert/Alert.js';
 import Register from './constructors/Register/Register.js';
 import Login from './constructors/Login/Login.js';
 import Account from './constructors/Account/Account.js';
 import Estimator from './constructors/Estimator/Estimator.js';
-import './App.css'
+import './App.css';
 
 let config = {
   num: [2, 4],
@@ -48,7 +49,8 @@ const initialState = {
                       height: 0, 
                       user_loggedIn: false, 
                       pageIn: "Estimator",
-                      mobNavShow: false
+                      mobNavShow: false,
+                      alertMsg: ''
                      }
 
 class App extends Component {
@@ -79,6 +81,8 @@ class App extends Component {
       this.setState({user_loggedIn: false});
       this.setState({pageIn: "Estimator"});
     }
+    document.getElementsByClassName("Alert")[0].style.display = "none";
+    this.setState({alertMsg: ''})
   }
 
   onMobNavButtonClick = (event) => {
@@ -87,6 +91,23 @@ class App extends Component {
     } else{
       this.setState({mobNavShow: true});
     }
+  }
+
+  onRouteChange = (Route) => {
+    this.setState({pageIn: Route})
+  }
+
+  onLoadUser = () => {
+    this.setState({user_loggedIn: true});
+  }
+
+  onSignOutUser = () => {
+    this.setState({user_loggedIn: false});
+  }
+
+  alertMsgChanged = (msg) => {
+    document.getElementsByClassName("Alert")[0].style.display = "block";
+    this.setState({alertMsg: msg});
   }
 
   render() {
@@ -115,11 +136,12 @@ class App extends Component {
         </Frame>
       </div>
       <div className = "MainPart shadow-2">
+      <Alert alertMsg = { this.state.alertMsg }/>
       {this.state.pageIn.trim() === "Estimator" &&
-        <Estimator />
+        <Estimator alertMsg = { this.state.alertMsg }/>
       }
       {this.state.pageIn.trim() === "Register" &&
-        <Register />
+        <Register onRouteChange = { this.onRouteChange } alertMsgChanged = { this.alertMsgChanged }/>
       }
       {this.state.pageIn.trim() === "Login" &&
         <Login />

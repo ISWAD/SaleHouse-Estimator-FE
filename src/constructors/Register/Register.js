@@ -1,10 +1,72 @@
 import React, {Component} from 'react';
 import './Register.css';
 
+const users = [
+                {
+                  firstName: "Mohammad",
+                  lastName: "Mohajer",
+                  email: "mmmohajer70@gmail.com",
+                  password: "123456"
+                },
+                {
+                  firstName: "Amin",
+                  lastName: "Nouri",
+                  email: "am_nouri@gmail.com",
+                  password: "78910"
+                }
+              ];
+
+let me = false;
+
+const initialState = {
+                      firstName: '',
+                      lastName: '',
+                      email: '',
+                      password: '',
+                      alertMsg: ''
+                     }
+
 class Register extends React.Component {
   
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state = initialState;
+  }
+
+  onFNameChange = (event) => {
+    this.setState({firstName: event.target.value});
+  }
+
+  onLNameChange = (event) => {
+    this.setState({lastName: event.target.value});
+  }
+
+  onEmailChange = (event) => {
+    this.setState({email: event.target.value});
+    let emails = users.map((user) => {
+                  return user.email;
+                 })
+    if (emails.includes(event.target.value)){
+      this.props.alertMsgChanged('Email address ' + event.target.value + ' has already been registered.');
+    } else {
+      this.props.alertMsgChanged('');
+      document.getElementsByClassName("Alert")[0].style.display = "none";
+    }
+  }
+
+  onPasswordChange = (event) => {
+    this.setState({password: event.target.value});
+  }
+
+  onRegisterClick = () => {
+    let emails = users.map((user) => {
+                  return user.email;
+                 })
+    if (emails.includes(this.state.email)){
+      this.props.alertMsgChanged('Email address ' + this.state.email + ' has already been registered.');
+    } else {
+      this.props.onRouteChange('My Account');
+    }
   }
 
   render() {
@@ -23,6 +85,7 @@ class Register extends React.Component {
           id = "firstname" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onFNameChange }
         />
         </div>
 
@@ -34,6 +97,7 @@ class Register extends React.Component {
           id = "lastname" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onLNameChange }
         />
         </div>
 
@@ -45,6 +109,7 @@ class Register extends React.Component {
           id = "email" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onEmailChange }
         />
         </div>
 
@@ -56,6 +121,7 @@ class Register extends React.Component {
           id = "password" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onPasswordChange }
         />
         </div>
         </div>
@@ -64,6 +130,7 @@ class Register extends React.Component {
           type="submit"
           value="Register"
           style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
+          onClick = { this.onRegisterClick }
         /> 
       </div>
     )

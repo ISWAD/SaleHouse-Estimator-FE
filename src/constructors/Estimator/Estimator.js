@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Pagination from '../../components/Pagination/Pagination.js';
-import Alert from '../../components/Alert/Alert.js';
 import Forms from '../../components/Forms/Forms.js';
 
 const initialState = {
@@ -35,7 +34,6 @@ class Estimator extends React.Component {
     
     return(
       <div>
-        <Alert />
         <Forms estPageIn = { this.state.estPageIn }/>
         <Pagination estPageIn = { this.state.estPageIn } onPaginationClick = { this.onPaginationClick }/>
       </div>

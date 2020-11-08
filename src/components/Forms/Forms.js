@@ -10,6 +10,7 @@ const Forms = ({ estPageIn }) => {
      			name="cars" 
      			id="cars"
      			className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+                style = {{ color: "white" }}
     		>
     			<option value="volvo">Volvo</option>
         		<option value="saab">Saab</option>
