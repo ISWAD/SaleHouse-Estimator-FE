@@ -3,16 +3,8 @@ import './Pagination.css';
 
 const Pagination = ({ estPageIn, onPaginationClick }) => {
 
-    let estPagesArr = [">", ">>"];
-
-    if (estPageIn === 1) {
-        estPagesArr = [">", ">>"];
-    } else if (estPageIn === 13) {
-        estPagesArr = ["<<", "<"];
-    } else {
-        estPagesArr = ["<<", "<", ">", ">>"];
-    }
-
+    let estPagesArr = ["<<", "<", ">", ">>"];
+    
 	let estPages = [];
 
     if (estPageIn < 4) {

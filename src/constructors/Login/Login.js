@@ -1,20 +1,91 @@
 import React, {Component} from 'react';
-// import './Register.css';
+
+const users = [
+                {
+                  firstName: "Mohammad",
+                  lastName: "Mohajer",
+                  email: "mmmohajer70@gmail.com",
+                  password: "123456"
+                },
+                {
+                  firstName: "Amin",
+                  lastName: "Nouri",
+                  email: "am_nouri@gmail.com",
+                  password: "78910"
+                }
+              ];
+
+const initialState = {
+                      email: '',
+                      password: ''
+};
+
+let emails = users.map((user) => {
+              return user.email;
+             });
+
+let passwords = users.map((user) => {
+              return user.password;
+             });
+
+
 
 class Login extends React.Component {
   
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state = initialState;
+  }
+
+  onEmailChange = (event) => {
+    this.props.removeAlert();
+    this.setState({email: event.target.value});
+  }
+
+  onPasswordChange = (event) => {
+    this.props.removeAlert();
+    this.setState({password: event.target.value});
+  }
+
+  onLoginClick = () => {
+    this.props.removeAlert();
+    let newMsg = [];
+    let verifiedMail = true;
+    let verifiedPass = true;
+    let fieldsFilled = true;
+    if (this.state.email === '' || this.state.password === ''){
+      fieldsFilled = false;
+    }
+    if (! emails.includes(this.state.email)) {
+      verifiedMail = false;
+    }
+    if (fieldsFilled && verifiedMail) {
+      let userIdx = emails.indexOf(this.state.email);
+      if (passwords[userIdx] !== this.state.password) {
+        verifiedPass = false;
+      }
+    }
+    if (! fieldsFilled) {
+      newMsg.push("Please fill all the required fields.");
+    }
+    if (fieldsFilled) {
+      if (! verifiedMail || ! verifiedPass) {
+        newMsg.push("Email or password you have entered is not correct.");
+      } else {
+        this.props.onRouteChange('My Account');
+        this.props.onLoadUser();
+      }
+    }
+    if (newMsg.length > 0) {
+      this.props.alertMsgChanged(newMsg);
+    }
   }
 
   render() {
     
     return(
       <div>
-        <h1 className = "f3 main_h1">
-        Login
-        </h1>
-
+        
         <div className = "FormContainer">
         <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "email"> Email </label>
@@ -24,6 +95,7 @@ class Login extends React.Component {
           id = "email" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onEmailChange }
         />
         </div>
 
@@ -35,6 +107,7 @@ class Login extends React.Component {
           id = "password" 
           className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          onChange = { this.onPasswordChange }
         />
         </div>
         </div>
@@ -44,6 +117,7 @@ class Login extends React.Component {
           type="submit"
           value="Login"
           style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
+          onClick = { this.onLoginClick }
         /> 
       </div>
     )

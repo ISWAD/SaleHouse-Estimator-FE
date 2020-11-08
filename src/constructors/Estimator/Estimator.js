@@ -17,9 +17,17 @@ class Estimator extends React.Component {
     let curPage= this.state.estPageIn;
     let btnClicked = event.target.innerHTML.trim();
     if (btnClicked === "&lt;") {
-      this.setState({estPageIn: curPage - 1});
+      if (curPage > 1) {
+        this.setState({estPageIn: curPage - 1});
+      } else {
+        this.setState({estPageIn: 13});
+      }
     } else if (btnClicked === "&gt;") {
-      this.setState({estPageIn: curPage + 1});
+      if (curPage < 13) {
+        this.setState({estPageIn: curPage + 1});
+      } else {
+        this.setState({estPageIn: 1});
+      }
     } else if (btnClicked === "&lt;&lt;") {
       this.setState({estPageIn: 1});
     } else if (btnClicked === "&gt;&gt;") {

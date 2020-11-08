@@ -146,10 +146,20 @@ class App extends Component {
         <Estimator alertMsg = { this.state.alertMsg }/>
       }
       {this.state.pageIn.trim() === "Register" &&
-        <Register onRouteChange = { this.onRouteChange } alertMsgChanged = { this.alertMsgChanged } removeAlert = { this.removeAlert }/>
+        <Register 
+          onRouteChange = { this.onRouteChange } 
+          alertMsgChanged = { this.alertMsgChanged } 
+          removeAlert = { this.removeAlert }
+          onLoadUser = { this.onLoadUser}
+        />
       }
       {this.state.pageIn.trim() === "Login" &&
-        <Login />
+        <Login 
+          onRouteChange = { this.onRouteChange }
+          alertMsgChanged = { this.alertMsgChanged } 
+          removeAlert = { this.removeAlert }
+          onLoadUser = { this.onLoadUser}
+        />
       }
       {this.state.pageIn.trim() === "My Account" &&
         <Account />

@@ -28,6 +28,8 @@ let emails = users.map((user) => {
               return user.email;
              })
 
+let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 class Register extends React.Component {
 
   
@@ -49,11 +51,17 @@ class Register extends React.Component {
   onEmailChange = (event) => {
     this.setState({email: event.target.value});
     this.props.removeAlert();
+    let newMsg = [];
     if (emails.includes(event.target.value)){
-      let newMsg = ["Email address " + event.target.value + " has already been registered."]
+      newMsg.push("Email address " + event.target.value + " has already been registered.");
       this.props.alertMsgChanged(newMsg);
-    } else{
+    } else if (! re.test(event.target.value)){
+      newMsg.push("Please enter a valid email address.");
+    } else {
       this.props.removeAlert();
+    }
+    if (newMsg.length > 0) {
+      this.props.alertMsgChanged(newMsg);
     }
   }
 
@@ -64,27 +72,35 @@ class Register extends React.Component {
 
   onRegisterClick = () => {
     this.props.removeAlert();
-    let newMsg = []
+    let validEmail = true;
+    let fstEmail = true;
+    let fieldsFilled = true; 
+    let newMsg = [];
     if (emails.includes(this.state.email)){
-        newMsg.push('Email address ' + this.state.email + ' has already been registered.');
-      }
-    if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.email !== '' && this.state.password !== '') {
-      if (! emails.includes(this.state.email)){
-        this.props.onRouteChange('My Account');
-      }
-    } else {
-        newMsg.push("Please fill all the required fields.");
-      }
+      fstEmail = false;
+      newMsg.push('Email address ' + this.state.email + ' has already been registered.');
+    }
+    if (! re.test(this.state.email)){
+      validEmail = false;
+      newMsg.push("Please enter a valid email address.");
+    }
+    if (this.state.firstName === '' || this.state.lastName === '' || this.state.email === '' || this.state.password === '') {
+      fieldsFilled = false;
+      newMsg.push("Please fill all the required fields.");
+    }
+    if (newMsg.length > 0) {
       this.props.alertMsgChanged(newMsg);
+    }
+    if (validEmail && fstEmail && fieldsFilled) {
+      this.props.onRouteChange('My Account');
+      this.props.onLoadUser();
+    }
   }
 
   render() {
     
     return(
       <div>
-        <h1 className = "f3 main_h1">
-        Register
-        </h1>
         <div className = "FormContainer">
         <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "firstname"> First Name </label>
