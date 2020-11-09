@@ -77,6 +77,7 @@ class App extends Component {
 
   onNavClick = (event) => {
     this.setState({pageIn: event.target.innerHTML});
+    document.getElementsByClassName("HeadPart")[0].style.height = "150px";
     this.setState({mobNavShow: false});
     if (event.target.innerHTML.trim() === "Logout"){
       this.setState({user_loggedIn: false});
@@ -88,7 +89,9 @@ class App extends Component {
   onMobNavButtonClick = (event) => {
     if (this.state.mobNavShow){
       this.setState({mobNavShow: false});
+      document.getElementsByClassName("HeadPart")[0].style.height = "150px";
     } else{
+      document.getElementsByClassName("HeadPart")[0].style.height = "250px";
       this.setState({mobNavShow: true});
     }
   }
