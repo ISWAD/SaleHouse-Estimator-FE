@@ -12,6 +12,8 @@ import Account from './constructors/Account/Account.js';
 import Estimator from './constructors/Estimator/Estimator.js';
 import './App.css';
 
+
+
 let config = {
   num: [2, 4],
   rps: 0.1,
@@ -45,13 +47,21 @@ if (Math.random() > 0.85) {
   });
 }
 
+// const appServer = `http://localhost:4000`;
+const appServer = `https://salehouse-server.herokuapp.com`;
+
 const initialState = {
                       width: 0, 
                       height: 0, 
                       user_loggedIn: false, 
                       pageIn: "Estimator",
                       mobNavShow: false,
-                      alertMsg: []
+                      alertMsg: [],
+                      user: {
+                        id: '',
+                        name: '',
+                        commentsNum: ''
+                      }
                      }
 
 class App extends Component {
@@ -97,11 +107,16 @@ class App extends Component {
   }
 
   onRouteChange = (Route) => {
-    this.setState({pageIn: Route})
+    this.setState({pageIn: Route});
   }
 
-  onLoadUser = () => {
+  onLoadUser = (userId, userName, userCommentsNum) => {
     this.setState({user_loggedIn: true});
+    this.setState({user: {
+      id: userId,
+      name: userName,
+      commentsNum: userCommentsNum
+    }});
   }
 
   onSignOutUser = () => {
@@ -145,10 +160,10 @@ class App extends Component {
           }
         </Frame>
       </div>
+      <div className = "MainPart">
       {this.state.alertMsg.length > 0 &&
       <Alert alertMsg = { this.state.alertMsg }/>
       }
-      <div className = "MainPart">
       {this.state.pageIn.trim() === "Estimator" &&
         <Estimator alertMsg = { this.state.alertMsg }/>
       }
@@ -158,6 +173,7 @@ class App extends Component {
           alertMsgChanged = { this.alertMsgChanged } 
           removeAlert = { this.removeAlert }
           onLoadUser = { this.onLoadUser}
+          appServer = { appServer }
         />
       }
       {this.state.pageIn.trim() === "Login" &&
@@ -166,10 +182,18 @@ class App extends Component {
           alertMsgChanged = { this.alertMsgChanged } 
           removeAlert = { this.removeAlert }
           onLoadUser = { this.onLoadUser}
+          appServer = { appServer }
         />
       }
       {this.state.pageIn.trim() === "My Account" &&
-        <Account />
+        <Account 
+          appServer = { appServer }
+          userId = {this.state.user.id}
+          userName = {this.state.user.name}
+          userCommentsNum = {this.state.user.commentsNum}
+          removeAlert = { this.removeAlert }
+          alertMsgChanged = { this.alertMsgChanged }
+        />
       }
       </div>
       <Footer />

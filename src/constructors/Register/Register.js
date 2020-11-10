@@ -1,34 +1,16 @@
 import React, {Component} from 'react';
 import './Register.css';
 
-const users = [
-                {
-                  firstName: "Mohammad",
-                  lastName: "Mohajer",
-                  email: "mmmohajer70@gmail.com",
-                  password: "123456"
-                },
-                {
-                  firstName: "Amin",
-                  lastName: "Nouri",
-                  email: "am_nouri@gmail.com",
-                  password: "78910"
-                }
-              ];
-
 const initialState = {
-                      firstName: '',
-                      lastName: '',
-                      email: '',
-                      password: '',
-                      alertMsg: ''
-                     }
-
-let emails = users.map((user) => {
-              return user.email;
-             })
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+};
 
 let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+let emails = [];
 
 class Register extends React.Component {
 
@@ -36,6 +18,19 @@ class Register extends React.Component {
   constructor(props){
     super(props);
     this.state = initialState;
+    this.registerServer = `${this.props.appServer}/register`;
+    this.profileServer = `${this.props.appServer}/mail`;
+  }
+
+  componentDidMount(){
+   fetch(this.profileServer)
+    .then(response => response.json())
+    .then(function(response) {
+      emails = [];
+      response.map((res) => {
+        emails.push(res);
+      });
+    });
   }
 
   onFNameChange = (event) => {
@@ -71,29 +66,37 @@ class Register extends React.Component {
   }
 
   onRegisterClick = () => {
-    this.props.removeAlert();
-    let validEmail = true;
-    let fstEmail = true;
-    let fieldsFilled = true; 
     let newMsg = [];
-    if (emails.includes(this.state.email)){
-      fstEmail = false;
-      newMsg.push('Email address ' + this.state.email + ' has already been registered.');
-    }
-    if (! re.test(this.state.email)){
-      validEmail = false;
-      newMsg.push("Please enter a valid email address.");
-    }
-    if (this.state.firstName === '' || this.state.lastName === '' || this.state.email === '' || this.state.password === '') {
-      fieldsFilled = false;
+    this.props.removeAlert();
+    let thenThis = this;
+    if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.email !== '' && this.state.password !== '') {
+      fetch(this.registerServer, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password
+        })
+      })
+      .then(response => response.json())
+      .then(function(response) {
+        if (response.id) {
+          thenThis.props.onLoadUser(response.id, response.firstName, response.commentsNum);
+          thenThis.props.onRouteChange('My Account');
+        } else {
+          newMsg.push("Email address " + thenThis.state.email + " has already been registered.");
+          thenThis.props.alertMsgChanged(newMsg);
+        }
+      })
+      .catch(err => {
+        newMsg.push("Something is wrong, please try again!");
+        thenThis.props.alertMsgChanged(newMsg);
+      })
+    } else {
       newMsg.push("Please fill all the required fields.");
-    }
-    if (newMsg.length > 0) {
       this.props.alertMsgChanged(newMsg);
-    }
-    if (validEmail && fstEmail && fieldsFilled) {
-      this.props.onRouteChange('My Account');
-      this.props.onLoadUser();
     }
   }
 

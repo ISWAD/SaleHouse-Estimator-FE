@@ -1,33 +1,9 @@
 import React, {Component} from 'react';
 
-const users = [
-                {
-                  firstName: "Mohammad",
-                  lastName: "Mohajer",
-                  email: "mmmohajer70@gmail.com",
-                  password: "123456"
-                },
-                {
-                  firstName: "Amin",
-                  lastName: "Nouri",
-                  email: "am_nouri@gmail.com",
-                  password: "78910"
-                }
-              ];
-
 const initialState = {
                       email: '',
                       password: ''
 };
-
-let emails = users.map((user) => {
-              return user.email;
-             });
-
-let passwords = users.map((user) => {
-              return user.password;
-             });
-
 
 
 class Login extends React.Component {
@@ -35,6 +11,7 @@ class Login extends React.Component {
   constructor(props){
     super(props);
     this.state = initialState;
+    this.loginServer = `${this.props.appServer}/login`;
   }
 
   onEmailChange = (event) => {
@@ -50,33 +27,32 @@ class Login extends React.Component {
   onLoginClick = () => {
     this.props.removeAlert();
     let newMsg = [];
-    let verifiedMail = true;
-    let verifiedPass = true;
-    let fieldsFilled = true;
-    if (this.state.email === '' || this.state.password === ''){
-      fieldsFilled = false;
-    }
-    if (! emails.includes(this.state.email)) {
-      verifiedMail = false;
-    }
-    if (fieldsFilled && verifiedMail) {
-      let userIdx = emails.indexOf(this.state.email);
-      if (passwords[userIdx] !== this.state.password) {
-        verifiedPass = false;
-      }
-    }
-    if (! fieldsFilled) {
+    const thenThis = this;
+    if (this.state.email !== '' && this.state.password !== '') {
+      fetch(this.loginServer, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password
+        })
+      })
+      .then(response => response.json())
+      .then(function(response) {
+        if (response.id) {
+          thenThis.props.onLoadUser(response.id, response.firstName, response.commentsNum);
+          thenThis.props.onRouteChange('My Account');
+        } else {
+          newMsg.push("Email or password you have entered is not correct.");
+          thenThis.props.alertMsgChanged(newMsg);
+        }
+      })
+      .catch(err => {
+        newMsg.push("Something is wrong, please try again!");
+        thenThis.props.alertMsgChanged(newMsg);
+      })
+    } else {
       newMsg.push("Please fill all the required fields.");
-    }
-    if (fieldsFilled) {
-      if (! verifiedMail || ! verifiedPass) {
-        newMsg.push("Email or password you have entered is not correct.");
-      } else {
-        this.props.onRouteChange('My Account');
-        this.props.onLoadUser();
-      }
-    }
-    if (newMsg.length > 0) {
       this.props.alertMsgChanged(newMsg);
     }
   }
