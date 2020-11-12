@@ -28,7 +28,8 @@ class Register extends React.Component {
     .then(function(response) {
       emails = [];
       response.map((res) => {
-        emails.push(res);
+        emails.push(res['email']);
+        console.log(emails);
       });
     });
   }
@@ -67,9 +68,14 @@ class Register extends React.Component {
 
   onRegisterClick = () => {
     let newMsg = [];
+    let validMail = true;
     this.props.removeAlert();
     let thenThis = this;
-    if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.email !== '' && this.state.password !== '') {
+    if (! re.test(this.state.email)) {
+      validMail = false;
+      newMsg.push("Please enter a valid email address.");
+    }
+    if (this.state.firstName !== '' && this.state.lastName !== '' && this.state.email !== '' && this.state.password !== '' && validMail) {
       fetch(this.registerServer, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
@@ -83,7 +89,7 @@ class Register extends React.Component {
       .then(response => response.json())
       .then(function(response) {
         if (response.id) {
-          thenThis.props.onLoadUser(response.id, response.firstName, response.commentsNum);
+          thenThis.props.onLoadUser(response.id, response.firstname, response.commentsnum);
           thenThis.props.onRouteChange('My Account');
         } else {
           newMsg.push("Email address " + thenThis.state.email + " has already been registered.");

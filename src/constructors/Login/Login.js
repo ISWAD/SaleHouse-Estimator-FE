@@ -40,7 +40,7 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(function(response) {
         if (response.id) {
-          thenThis.props.onLoadUser(response.id, response.firstName, response.commentsNum);
+          thenThis.props.onLoadUser(response.id, response.firstname, response.commentsnum);
           thenThis.props.onRouteChange('My Account');
         } else {
           newMsg.push("Email or password you have entered is not correct.");

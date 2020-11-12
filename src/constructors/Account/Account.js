@@ -25,8 +25,8 @@ class Account extends React.Component {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          id: this.props.userId,
-          commentsNum: this.state.userCommentsNum
+          userid: this.props.userId,
+          commenttext: this.state.userComment
         })
       })
       .then(response => response.json())
