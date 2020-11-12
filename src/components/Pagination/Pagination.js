@@ -29,18 +29,18 @@ const Pagination = ({ estPageIn, onPaginationClick }) => {
 		<div>
 			<div>
         		<ul className = "pageNum">
-            		{estPagesArr.map((num, idx) => {
-            			return <li className = "shadow-2" onClick = {onPaginationClick}> { num } </li>
+            		{estPagesArr.map((num) => {
+            			return <li className = "shadow-2" key = {num.toString()} onClick = {onPaginationClick}> { num } </li>
             		})}
             	</ul>
             </div>
             <div>
         		<ul className = "pageNum">
-            		{estPages.map((num, idx) => {
+            		{estPages.map((num) => {
                         if (num === estPageIn) {
-            			     return <li style = {{color: "yellow"}} className = "shadow-2 pa2" onClick = {onPaginationClick}> { num } </li>
+            			     return <li style = {{color: "yellow"}} className = "shadow-2 pa2" key = {num.toString()} onClick = {onPaginationClick}> { num } </li>
                         } else {
-                            return <li className = "shadow-2 pa2" onClick = {onPaginationClick}> { num } </li>
+                            return <li className = "shadow-2 pa2" key = {num.toString()} onClick = {onPaginationClick}> { num } </li>
                         }
             		})}
             	</ul>

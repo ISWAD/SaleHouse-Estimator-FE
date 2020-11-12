@@ -28,7 +28,7 @@ class Register extends Component {
     .then(function(response) {
       emails = [];
       response.map((res) => {
-        emails.push(res['email']);
+        return emails.push(res['email']);
       });
     });
   }
