@@ -76,6 +76,7 @@ class App extends Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    document.getElementsByClassName("LoadPart")[0].style.display = "none";
   }
 
   componentWillUnmount() {

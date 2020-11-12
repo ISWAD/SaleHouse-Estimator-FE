@@ -12,7 +12,7 @@ let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9
 
 let emails = [];
 
-class Register extends React.Component {
+class Register extends Component {
 
   
   constructor(props){
@@ -29,7 +29,6 @@ class Register extends React.Component {
       emails = [];
       response.map((res) => {
         emails.push(res['email']);
-        console.log(emails);
       });
     });
   }

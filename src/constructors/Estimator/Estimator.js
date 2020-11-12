@@ -6,7 +6,7 @@ const initialState = {
                       estPageIn: 1 
                      }
 
-class Estimator extends React.Component {
+class Estimator extends Component {
   
   constructor(){
     super();

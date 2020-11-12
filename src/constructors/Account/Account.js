@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class Account extends React.Component {
+class Account extends Component {
   
   constructor(props){
     super(props);
