@@ -49,8 +49,7 @@ if (Math.random() > 0.85) {
 }
 
 // const appServer = `http://localhost:4000`;
-// const appServer = `https://salehouse-server.herokuapp.com`;
-const appServer = process.env.BACKEND_SERVER;
+const appServer = `https://salehouse-server.herokuapp.com`;
 
 const initialState = {
                       width: 0, 
