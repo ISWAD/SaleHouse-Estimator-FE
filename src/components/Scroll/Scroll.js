@@ -3,7 +3,7 @@ import './Scroll.css';
 
 const Scroll = (props) => {
 	return (
-		<div style = {{ overflowY: "auto"}}>
+		<div style = {{ overflowY: "auto", overflowX: "hidden"}}>
 			{props.children};
 		</div>
 	)
