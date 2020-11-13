@@ -11,11 +11,10 @@
 	padding: 20px;
 	text-align: center;
 	color: white;
-	height: 560px;
 }
 
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 900px) {
 	.MainPart{
 		height: 400px;
 	}
