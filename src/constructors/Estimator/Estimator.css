@@ -1,0 +1,13 @@
+select{
+	color: white;
+}
+
+.Forms > .FormContainer > .InputContainer{
+	margin: 20px auto;
+}
+
+@media only screen and (min-width: 900px) {
+	.TwoLines{
+		margin-top: 22.5px;
+	}
+}
