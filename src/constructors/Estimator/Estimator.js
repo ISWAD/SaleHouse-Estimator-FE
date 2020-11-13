@@ -8,8 +8,18 @@ import FormsPg4 from '../APIForms/FormsPg4/FormsPg4.js';
 import FormsPg5 from '../APIForms/FormsPg5/FormsPg5.js';
 import FormsPg6 from '../APIForms/FormsPg6/FormsPg6.js';
 import FormsPg7 from '../APIForms/FormsPg7/FormsPg7.js';
+import FormsPg8 from '../APIForms/FormsPg8/FormsPg8.js';
+import FormsPg9 from '../APIForms/FormsPg9/FormsPg9.js';
+import FormsPg10 from '../APIForms/FormsPg10/FormsPg10.js';
+import FormsPg11 from '../APIForms/FormsPg11/FormsPg11.js';
+import FormsPg12 from '../APIForms/FormsPg12/FormsPg12.js';
+import FormsPg13 from '../APIForms/FormsPg13/FormsPg13.js';
 
 import './Estimator.css';
+
+let msgselect = "If your desired option is not in our list you can choose Other. However, if you inform us through your account we can better assist you!";
+let msgtxt = "If your values are out of the range inside the brackets our app may not predicts well, in this case you are advised to inform us through your account so that we can assist you!";
+let msgtxt2 = "For items that are not existing in your desired apartment, just enter 0!"
 
 const initialState = {
                       estPageIn: 1,
@@ -78,21 +88,27 @@ class Estimator extends Component {
     let btnClicked = event.target.innerHTML.trim();
     if (btnClicked === "&lt;") {
       if (curPage > 1) {
-        this.setState({estPageIn: curPage - 1});
+        curPage--;
       } else {
-        this.setState({estPageIn: 26});
+        curPage = 13;
       }
     } else if (btnClicked === "&gt;") {
-      if (curPage < 26) {
-        this.setState({estPageIn: curPage + 1});
+      if (curPage < 13) {
+        curPage++;
       } else {
-        this.setState({estPageIn: 1});
+        curPage = 1;
       }
     } else if (btnClicked === "&lt;&lt;") {
-      this.setState({estPageIn: 1});
+      curPage = 1;
     } else if (btnClicked === "&gt;&gt;") {
-      this.setState({estPageIn: 26});
+      curPage = 13;
     }
+    if (curPage >= 8) {
+      this.props.alertMsgChanged([msgtxt, msgtxt2]);
+    } else {
+      this.props.removeAlert();
+    }
+    this.setState({estPageIn: curPage});
   }
 
   render() {
@@ -119,6 +135,24 @@ class Estimator extends Component {
           }
           {this.state.estPageIn === 7 &&
             <FormsPg7 />
+          }
+          {this.state.estPageIn === 8 &&
+            <FormsPg8 />
+          }
+          {this.state.estPageIn === 9 &&
+            <FormsPg9 />
+          }
+          {this.state.estPageIn === 10 &&
+            <FormsPg10 />
+          }
+          {this.state.estPageIn === 11 &&
+            <FormsPg11 />
+          }
+          {this.state.estPageIn === 12 &&
+            <FormsPg12 />
+          }
+          {this.state.estPageIn === 13 &&
+            <FormsPg13 />
           }
         <Pagination estPageIn = { this.state.estPageIn } onPaginationClick = { this.onPaginationClick }/>
       </div>

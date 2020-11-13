@@ -140,6 +140,7 @@ class App extends Component {
   render() {
     return(
       <div>
+      <div className = "container">
       <div className = "HeadPart">
         <ParticlesBg type="custom" config={config} bg={true} />
         <Frame>
@@ -168,7 +169,10 @@ class App extends Component {
       <Alert alertMsg = { this.state.alertMsg }/>
       }
       {this.state.pageIn.trim() === "Estimator" &&
-        <Estimator alertMsg = { this.state.alertMsg }/>
+        <Estimator 
+          alertMsgChanged = { this.alertMsgChanged }
+          removeAlert = { this.removeAlert }
+        />
       }
       {this.state.pageIn.trim() === "Register" &&
         <Register 
@@ -200,6 +204,7 @@ class App extends Component {
       }
       </div>
       </Scroll>
+      </div>
       <Footer />
       </div>
     )

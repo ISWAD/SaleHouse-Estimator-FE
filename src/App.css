@@ -1,3 +1,17 @@
+.container{
+	min-height: 100vh;
+	margin-bottom: -160px; 
+}
+
+.container:after {
+  content: "";
+  display: block;
+}
+
+.Footer, .container:after {
+  height: 120px; 
+}
+
 .HeadPart{
 	width: 100%;
 	display: flex;
@@ -14,21 +28,19 @@
 }
 
 
-@media only screen and (min-width: 900px) {
-	.MainPart{
-		height: 400px;
-	}
-}
-
-@media only screen and (min-height: 1000px) {
-	.HeadPart{
-		height: 25vh;
-	}
-	.MainPart{
-		height: 50vh;
-	}
+@media only screen and (max-width: 900px) {
 	.Footer{
-		height: 20vh;
+		display: block;
+		text-align: center;
+	}
+	.Footer, .container:after {
+		height: 180px; 
+	}
+	.container{
+		margin-bottom: -220px;
 	}
 
+	.CopyRight{
+		margin-top: 10px;
+	}
 }

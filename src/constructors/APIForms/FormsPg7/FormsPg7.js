@@ -10,7 +10,7 @@ class FormsPg7 extends Component{
 		return(
 			<div className = "FormContainer">
 				<div className = "InputContainer">
-			        <label className = "db fw6 lh-copy f5" htmlFor = "MSZoning"> Identifies the general zoning classification of the sale </label>
+			        <label className = "db fw6 lh-copy f5" htmlFor = "MSZoning"> The general zoning classification of the sale </label>
 			        <select 
 		              name="MSZoning"
 		              id="MSZoning"
