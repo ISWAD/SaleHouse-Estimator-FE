@@ -126,7 +126,7 @@ class App extends Component {
           }
         </Frame>
       </div>
-      <div className = "MainPart shadow-2">
+      <div className = "MainPart">
       {this.state.alertMsg.length > 0 &&
       <Alert alertMsg = { this.state.alertMsg }/>
       }

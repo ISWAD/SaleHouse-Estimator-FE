@@ -19,7 +19,7 @@ import './Estimator.css';
 
 let msgselect = "If your desired option is not in our list you can choose Other. However, if you inform us through your account we can better assist you!";
 let msgtxt = "If your values are out of the range inside the brackets our app may not predicts well, in this case you are advised to inform us through your account so that we can assist you!";
-let msgtxt2 = "For items that are not existing in your desired apartment, just enter 0!"
+let msgtxt2 = "For items that are not existing in your desired apartment, just enter 0"
 
 const initialState = {
                       estPageIn: 1,
@@ -83,6 +83,11 @@ class Estimator extends Component {
     this.state = initialState;
   }
 
+  componentDidMount() {
+    this.props.removeAlert();
+    this.props.alertMsgChanged([msgselect]);
+  }
+
   onPaginationClick = (event) => {
     let curPage= this.state.estPageIn;
     let btnClicked = event.target.innerHTML.trim();
@@ -107,6 +112,7 @@ class Estimator extends Component {
       this.props.alertMsgChanged([msgtxt, msgtxt2]);
     } else {
       this.props.removeAlert();
+      this.props.alertMsgChanged([msgselect]);
     }
     this.setState({estPageIn: curPage});
   }
@@ -137,39 +143,6 @@ class Estimator extends Component {
             <FormsPg12 />
             <FormsPg13 />
             </div>
-          }
-          {this.state.estPageIn === 3 &&
-            <FormsPg3 />
-          }
-          {this.state.estPageIn === 4 &&
-            <FormsPg4 />
-          }
-          {this.state.estPageIn === 5 &&
-            <FormsPg5 />
-          }
-          {this.state.estPageIn === 6 &&
-            <FormsPg6 />
-          }
-          {this.state.estPageIn === 7 &&
-            <FormsPg7 />
-          }
-          {this.state.estPageIn === 8 &&
-            <FormsPg8 />
-          }
-          {this.state.estPageIn === 9 &&
-            <FormsPg9 />
-          }
-          {this.state.estPageIn === 10 &&
-            <FormsPg10 />
-          }
-          {this.state.estPageIn === 11 &&
-            <FormsPg11 />
-          }
-          {this.state.estPageIn === 12 &&
-            <FormsPg12 />
-          }
-          {this.state.estPageIn === 13 &&
-            <FormsPg13 />
           }
         <Pagination estPageIn = { this.state.estPageIn } onPaginationClick = { this.onPaginationClick }/>
       </div>
