@@ -25,22 +25,15 @@
 	padding: 20px;
 	text-align: center;
 	color: white;
+	margin-bottom: 60px;
 }
 
 
 @media only screen and (max-width: 900px) {
-	.Footer{
-		display: block;
-		text-align: center;
-	}
 	.Footer, .container:after {
 		height: 180px; 
 	}
 	.container{
 		margin-bottom: -220px;
-	}
-
-	.CopyRight{
-		margin-top: 10px;
 	}
 }

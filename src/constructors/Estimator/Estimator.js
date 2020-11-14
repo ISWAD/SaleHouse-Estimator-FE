@@ -90,10 +90,10 @@ class Estimator extends Component {
       if (curPage > 1) {
         curPage--;
       } else {
-        curPage = 13;
+        curPage = 2;
       }
     } else if (btnClicked === "&gt;") {
-      if (curPage < 13) {
+      if (curPage < 2) {
         curPage++;
       } else {
         curPage = 1;
@@ -101,9 +101,9 @@ class Estimator extends Component {
     } else if (btnClicked === "&lt;&lt;") {
       curPage = 1;
     } else if (btnClicked === "&gt;&gt;") {
-      curPage = 13;
+      curPage = 2;
     }
-    if (curPage >= 8) {
+    if (curPage >= 2) {
       this.props.alertMsgChanged([msgtxt, msgtxt2]);
     } else {
       this.props.removeAlert();
@@ -111,15 +111,32 @@ class Estimator extends Component {
     this.setState({estPageIn: curPage});
   }
 
+  onLot
+
   render() {
     
     return(
       <div className = "Forms">
           {this.state.estPageIn === 1 &&
+            <div>
             <FormsPg1 />
+            <FormsPg2 />
+            <FormsPg3 />
+            <FormsPg4 />
+            <FormsPg5 />
+            <FormsPg6 />
+            <FormsPg7 />
+            </div>
           }
           {this.state.estPageIn === 2 &&
-            <FormsPg2 />
+            <div>
+            <FormsPg8 />
+            <FormsPg9 />
+            <FormsPg10 />
+            <FormsPg11 />
+            <FormsPg12 />
+            <FormsPg13 />
+            </div>
           }
           {this.state.estPageIn === 3 &&
             <FormsPg3 />

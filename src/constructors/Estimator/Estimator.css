@@ -2,7 +2,7 @@ select{
 	color: white;
 }
 
-.Forms > .FormContainer > .InputContainer{
+.Forms > div > .FormContainer > .InputContainer{
 	margin: 20px auto;
 }
 

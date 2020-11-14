@@ -3,7 +3,7 @@ import './Pagination.css';
 
 const Pagination = ({ estPageIn, onPaginationClick }) => {
 
-    let estPagesArr = ["<<", "<", ">", ">>"];
+    let estPagesArr = ["<", ">"];
 	
 	return (
 		<div>
@@ -14,7 +14,7 @@ const Pagination = ({ estPageIn, onPaginationClick }) => {
             		})}
             	</ul>
             </div>
-            <div style = {{marginTop: '30px'}}>Page <span style = {{color: 'yellow'}}>{estPageIn}</span> of 13</div>
+            <div style = {{marginTop: '30px'}}>Page <span style = {{color: 'yellow'}}>{estPageIn}</span> of 2</div>
          </div>
 	)
 }
