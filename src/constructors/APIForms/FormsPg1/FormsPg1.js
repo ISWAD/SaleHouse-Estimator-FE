@@ -31,12 +31,12 @@ class FormsPg1 extends Component{
               			id="SaleType"
               			className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
             		>
-		              <option value="SaleType_group3"> Warranty Deed - Conventional </option>
-		              <option value="SaleType_group1"> Warranty Deed - Cash </option>
+		              <option value="SaleType_group3" title = "Warranty Deed - Conventional"> Conventional </option>
+		              <option value="SaleType_group1" title = "Warranty Deed - Cash"> Cash </option>
 		              <option value="SaleType_group1"> Home just constructed and sold </option>
 		              <option value="COD"> Court Officer Deed/Estate </option>
-		              <option value="SaleType_group1"> Contract 15% Down payment regular terms </option>
-		              <option value="SaleType_group2"> Contract Low Down payment and low interest </option>
+		              <option value="SaleType_group1" title="Contract 15% Down payment regular terms"> 15% D.P.</option>
+		              <option value="SaleType_group2" title = "Contract Low Down payment and low interest"> Low D.P. </option>
 		              <option value="SaleType_group3"> Contract Low Interest </option>
 		              <option value="SaleType_group2"> Contract Low Down </option>
 		              <option value="SaleType_group3"> Other </option>
@@ -51,7 +51,7 @@ class FormsPg1 extends Component{
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
             		>
 		              <option value= "4"> Good Exposure </option>
-		              <option value= "3"> Average Exposure (split levels or foyers typically score average or above) </option>
+		              <option value= "3"> Average Exposure </option>
 		              <option value= "2"> Mimimum Exposure </option>
 		              <option value= "1">No Exposure </option>
 		              <option value= "0"> No Basement</option>

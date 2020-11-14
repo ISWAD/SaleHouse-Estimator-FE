@@ -16,11 +16,11 @@ class FormsPg2 extends Component{
 		              id="FireplaceQu"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
        				>
-		              <option value= "5"> Excellent - Exceptional Masonry Fireplace </option>
-		              <option value= "4"> Good - Masonry Fireplace in main level </option>
-		              <option value= "3"> Average - Prefabricated Fireplace in main living area or Masonry Fireplace in basement </option>
-		              <option value= "2">Fair - Prefabricated Fireplace in basement </option>
-					  <option value= "1"> Poor - Ben Franklin Stove </option>
+		              <option value= "5"> Excellent</option>
+		              <option value= "4"> Good</option>
+		              <option value= "3"> Average</option>
+		              <option value= "2">Fair</option>
+					  <option value= "1"> Poor</option>
 					  <option value= "0"> No Fireplace </option>
        				</select>
 				</div>
@@ -46,11 +46,11 @@ class FormsPg2 extends Component{
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
        			   >
 		              <option value= "Normal"> Normal Sale </option>
-		              <option value= "Abnorml"> Abnormal Sale -  trade, foreclosure, short sale</option>
+		              <option value= "Abnorml" title = "Abnormal Sale -  trade, foreclosure, short sale">Abnormal Sale</option>
 		              <option value= "AdjLand"> Adjoining Land Purchase </option>
-		              <option value= "SaleCondition_group1">Allocation - two linked properties with separate deeds, typically condo with a garage unit </option>
+		              <option value= "SaleCondition_group1" title = "Allocation - two linked properties with separate deeds, typically condo with a garage unit">Allocation</option>
 					  <option value= "SaleCondition_group1"> Sale between family members </option>
-					  <option value= "Partial"> Home was not completed when last assessed (associated with New Homes) </option>
+					  <option value= "Partial"> Home was not completed</option>
 					  <option value= "Normal"> Other </option>
        			   </select>
 				</div>

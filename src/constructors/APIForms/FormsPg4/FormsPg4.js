@@ -17,9 +17,9 @@ class FormsPg4 extends Component{
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
        			>
 		              <option value= "4" > Good </option>
-		              <option value= "3" > Typical - slight dampness allowed </option>
-					  <option value= "2" > Fair - dampness or some cracking or settling </option>
-					  <option value= "1" > Poor - Severe cracking, settling, or wetness </option>
+		              <option value= "3" > Typical</option>
+					  <option value= "2" > Fair</option>
+					  <option value= "1" > Poor</option>
 					  <option value= "0" > No Basement </option>
        				</select>
 				</div>
@@ -36,7 +36,7 @@ class FormsPg4 extends Component{
 		              <option value= "Norm" > Normal </option>
 					  <option value= "Condition1_group1" > Within 200' of North-South Railroad </option>
 					  <option value= "Condition1_group1" > Adjacent to North-South Railroad </option>
-					  <option value= "Condition1_group2" > Near positive off-site feature--park, greenbelt, etc. </option>
+					  <option value= "Condition1_group2" title = "Near positive off-site feature--park, greenbelt, etc."> Near greenbelt</option>
 					  <option value= "Condition1_group2" > Adjacent to postive off-site feature </option>
 					  <option value= "Condition1_group2" > Within 200' of East-West Railroad </option>
 					  <option value= "Condition1_group3" > Adjacent to East-West Railroad </option>
@@ -68,7 +68,7 @@ class FormsPg4 extends Component{
 		              <option value= "GarageType_group1" > More than one type of garage </option>
 		              <option value= "Attchd" > Attached to home </option>
 		              <option value= "Basment" > Basement Garage </option>
-					  <option value= "BuiltIn" > Built-In (Garage part of house - typically has room above garage) </option>
+					  <option value= "BuiltIn" title = "Built-In (Garage part of house - typically has room above garage)" > Built-In </option>
 					  <option value= "GarageType_group1" > Car Port </option>
 					  <option value= "Detchd" > Detached from home </option>
 					  <option value= "GarageType_group1" > No Garage </option>

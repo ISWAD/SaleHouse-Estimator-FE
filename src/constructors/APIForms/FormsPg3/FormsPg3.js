@@ -16,10 +16,10 @@ class FormsPg3 extends Component{
 		              id="Electrical"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
        			>
-		              <option value= "Electrical_group2"> Standard Circuit Breakers & Romex </option>
-		              <option value= "FuseA"> Fuse Box over 60 AMP and all Romex wiring (Average) </option>
-		              <option value= "Electrical_group1"> 60 AMP Fuse Box and mostly Romex wiring (Fair) </option>
-		              <option value= "Electrical_group1"> 60 AMP Fuse Box and mostly knob & tube wiring (poor) </option>
+		              <option value= "Electrical_group2" title = "Standard Circuit Breakers & Romex"> Standard Circuit</option>
+		              <option value= "FuseA" title = "Fuse Box over 60 AMP and all Romex wiring (Average)"> Fuse Box over 60 AMP</option>
+		              <option value= "Electrical_group1" title = "60 AMP Fuse Box and mostly Romex wiring (Fair)"> mostly Romex wiring </option>
+		              <option value= "Electrical_group1" title = "60 AMP Fuse Box and mostly knob & tube wiring (poor)"> mostly knob & tube wiring </option>
 					  <option value= "Electrical_group1"> Mixed </option>
 					  <option value= "Electrical_group2"> Other </option>
        				</select>

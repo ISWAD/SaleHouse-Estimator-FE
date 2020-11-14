@@ -63,11 +63,11 @@ class FormsPg6 extends Component{
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
        				>
 		              <option value= "HouseStyle_group1" > One story </option>
-		              <option value= "1.5Fin" > One and one-half story (2nd level finished) </option>
-		              <option value= "1.5Unf" > One and one-half story (2nd level unfinished) </option>
+		              <option value= "1.5Fin" title = "One and one-half story (2nd level finished)" > One and one-half story I </option>
+		              <option value= "1.5Unf" title = "One and one-half story (2nd level unfinished)" > One and one-half story II </option>
 					  <option value= "2Story" > Two story </option>
-					  <option value= "HouseStyle_group1" > Two and one-half story (2nd level finished) </option>
-					  <option value= "HouseStyle_group1" > Two and one-half story (2nd level unfinished) </option>
+					  <option value= "HouseStyle_group1" title = "Two and one-half story (2nd level finished)" > Two and one-half story I </option>
+					  <option value= "HouseStyle_group1" title = "Two and one-half story (2nd level unfinished)"> Two and one-half story II</option>
 					  <option value= "SFoyer" > Split Foyer </option>
 					  <option value= "SLvl" > Split Level </option>
 					  <option value= "HouseStyle_group1" > Other </option>
