@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ParticlesBg from "particles-bg";
 import Frame from "./components/Frame/Frame.js";
 import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
@@ -12,40 +11,6 @@ import Account from './constructors/Account/Account.js';
 import Estimator from './constructors/Estimator/Estimator.js';
 import './App.css';
 
-
-
-let config = {
-  num: [2, 4],
-  rps: 0.1,
-  radius: [5, 40],
-  life: [1.5, 3],
-  v: [2, 3],
-  tha: [-40, 40],
-  alpha: [0.6, 0],
-  scale: [.1, 0.25],
-  position: "all",
-  color: ["random", "#ffcccc"],
-  cross: "dead",
-  // emitter: "follow",
-  random: 15
-};
-
-if (Math.random() > 0.85) {
-  config = Object.assign(config, {
-    onParticleUpdate: (ctx, particle) => {
-      ctx.beginPath();
-      ctx.rect(
-        particle.p.x,
-        particle.p.y,
-        particle.radius * 2,
-        particle.radius * 2
-        );
-      ctx.fillStyle = particle.color;
-      ctx.fill();
-      ctx.closePath();
-    }
-  });
-}
 
 // const appServer = `http://localhost:4000`;
 const appServer = `https://salehouse-server.herokuapp.com`;
@@ -141,7 +106,6 @@ class App extends Component {
       <div>
       <div className = "container">
       <div className = "HeadPart">
-        <ParticlesBg type="custom" config={config} bg={true} />
         <Frame>
           <Logo />
           {this.state.width >= 900 &&
