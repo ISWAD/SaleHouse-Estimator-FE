@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg10 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onMasVnrAreaChange = (event) => {
+		let val = event.target.value;
+		this.props.setMasVnrAreaVal(val);
+	}
+
+	onGarageYrBltChange = (event) => {
+		let val = event.target.value;
+		this.props.setGarageYrBltVal(val);
+	}
+
+	onLotAreaChange = (event) => {
+		let val = event.target.value;
+		this.props.setLotAreaVal(val);
+	}
+
+	onHalfBathChange = (event) => {
+		let val = event.target.value;
+		this.props.setHalfBathVal(val);
 	}
 
 	render() {
@@ -17,6 +37,7 @@ class FormsPg10 extends Component{
 		          		id = "MasVnrArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onMasVnrAreaChange }
 		          	/>
 				</div>
 
@@ -28,6 +49,7 @@ class FormsPg10 extends Component{
           				id = "GarageYrBlt" 
           				className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           				style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          				onChange = { this.onGarageYrBltChange }
           			/>
 				</div>
 
@@ -39,6 +61,7 @@ class FormsPg10 extends Component{
 		          		id = "LotArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onLotAreaChange }
 		          	/>
 				</div>
 
@@ -50,6 +73,7 @@ class FormsPg10 extends Component{
 		          		id = "HalfBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onHalfBathChange }
 		          	/>
 				</div>
 			</div>

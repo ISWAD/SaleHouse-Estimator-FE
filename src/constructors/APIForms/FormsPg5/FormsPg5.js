@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg5 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onBsmtFinType1Change = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtFinType1Val(val);
+	}
+
+	onOverallCondChange = (event) => {
+		let val = event.target.value;
+		this.props.setOverallCondVal(val);
+	}
+
+	onBsmtQualChange = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtQualVal(val);
+	}
+
+	onKitchenQualChange = (event) => {
+		let val = event.target.value;
+		this.props.setKitchenQualVal(val);
 	}
 
 	render() {
@@ -15,6 +35,7 @@ class FormsPg5 extends Component{
 		              name="BsmtFinType1"
 		              id="BsmtFinType1"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onBsmtFinType1Change }
        				>
 		              <option value= "6" > Good Living Quarters </option>
 		              <option value= "5" > Average Living Quarters </option>
@@ -32,6 +53,7 @@ class FormsPg5 extends Component{
 		              name="OverallCond"
 		              id="OverallCond"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onOverallCondChange }
        				>
 		              <option value= "10" > Very Excellent </option>
 		              <option value= "9" > Excellent </option>
@@ -52,6 +74,7 @@ class FormsPg5 extends Component{
 		              name="BsmtQual"
 		              id="BsmtQual"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onBsmtQualChange }
        				>
 		              <option value= "5" > Excellent (100+ inches) </option>
 		              <option value= "4" > Good (90-99 inches) </option>
@@ -68,6 +91,7 @@ class FormsPg5 extends Component{
 			        	name="KitchenQual"
 			            id="KitchenQual"
 			            className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+			            onChange = { this.onKitchenQualChange }
        				>
 			        	<option value= "5" > Excellent </option>
 			            <option value= "4" > Good </option>

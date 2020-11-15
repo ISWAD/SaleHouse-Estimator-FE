@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg3 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onElectricalChange = (event) => {
+		let val = event.target.value;
+		this.props.setElectricalVal(val);
+	}
+
+	onOverallQualChange = (event) => {
+		let val = event.target.value;
+		this.props.setOverallQualVal(val);
+	}
+
+	onMasVnrTypeChange = (event) => {
+		let val = event.target.value;
+		this.props.setMasVnrTypeVal(val);
+	}
+
+	onExterQualChange = (event) => {
+		let val = event.target.value;
+		this.props.setExterQualVal(val);
 	}
 
 	render() {
@@ -15,6 +35,7 @@ class FormsPg3 extends Component{
 		              name="Electrical" 
 		              id="Electrical"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onElectricalChange }
        			>
 		              <option value= "Electrical_group2" title = "Standard Circuit Breakers & Romex"> Standard Circuit</option>
 		              <option value= "FuseA" title = "Fuse Box over 60 AMP and all Romex wiring (Average)"> Fuse Box over 60 AMP</option>
@@ -31,6 +52,7 @@ class FormsPg3 extends Component{
 		              name="OverallQual"
 		              id="OverallQual"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onOverallQualChange }
 	       			>
 		              <option value= "10" > Very Excellent </option>
 		              <option value= "9" > Excellent </option>
@@ -51,6 +73,7 @@ class FormsPg3 extends Component{
 		              name="MasVnrType" 
 		              id="MasVnrType"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onMasVnrTypeChange }
        			   >
 		              <option value= "BrkCmn"> Brick Common </option>
 		              <option value= "BrkFace"> Brick Face </option>
@@ -66,6 +89,7 @@ class FormsPg3 extends Component{
 		              name="ExterQual"
 		              id="ExterQual"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onExterQualChange }
        			   >
 	                  <option value= "5" > Excellent </option>
 	              	  <option value= "4" > Good </option>

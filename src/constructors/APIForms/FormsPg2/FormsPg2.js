@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg2 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onFireplaceQuChange = (event) => {
+		let val = event.target.value;
+		this.props.setFireplaceQuVal(val);
+	}
+
+	onPavedDriveChange = (event) => {
+		let val = event.target.value;
+		this.props.setPavedDriveVal(val);
+	}
+
+	onSaleConditionChange = (event) => {
+		let val = event.target.value;
+		this.props.setSaleConditionVal(val);
+	}
+
+	onExterior2ndChange = (event) => {
+		let val = event.target.value;
+		this.props.setExterior2ndVal(val);
 	}
 
 	render() {
@@ -15,6 +35,7 @@ class FormsPg2 extends Component{
 		              name="FireplaceQu" 
 		              id="FireplaceQu"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onFireplaceQuChange }
        				>
 		              <option value= "5"> Excellent</option>
 		              <option value= "4"> Good</option>
@@ -31,6 +52,7 @@ class FormsPg2 extends Component{
 		              name="PavedDrive" 
 		              id="PavedDrive"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onPavedDriveChange }
        			   >
 		              <option value= "3"> Paved </option>
 		              <option value= "2"> Partial Pavement </option>
@@ -44,6 +66,7 @@ class FormsPg2 extends Component{
 		              name="SaleCondition" 
 		              id="SaleCondition"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onSaleConditionChange }
        			   >
 		              <option value= "Normal"> Normal Sale </option>
 		              <option value= "Abnorml" title = "Abnormal Sale -  trade, foreclosure, short sale">Abnormal Sale</option>
@@ -61,6 +84,7 @@ class FormsPg2 extends Component{
 		              name="Exterior2nd" 
 		              id="Exterior2nd"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onExterior2ndChange }
        			   >
 		              <option value= "Exterior2nd_group1"> Asbestos Shingles </option>
 		              <option value= "Exterior2nd_group1"> Asphalt Shingles </option>

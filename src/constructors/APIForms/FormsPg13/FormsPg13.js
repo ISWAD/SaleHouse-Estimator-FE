@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg13 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onWoodDeckSFChange = (event) => {
+		let val = event.target.value;
+		this.props.setWoodDeckSFVal(val);
+	}
+
+	onFullBathChange = (event) => {
+		let val = event.target.value;
+		this.props.setFullBathVal(val);
+	}
+
+	onTotRmsAbvGrdChange = (event) => {
+		let val = event.target.value;
+		this.props.setTotRmsAbvGrdVal(val);
+	}
+
+	on2ndFlrSFChange = (event) => {
+		let val = event.target.value;
+		this.props.set2ndFlrSFVal(val);
 	}
 
 	render() {
@@ -17,6 +37,7 @@ class FormsPg13 extends Component{
 		          		id = "WoodDeckSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onWoodDeckSFChange }
 		          	/>
 				</div>
 
@@ -28,6 +49,7 @@ class FormsPg13 extends Component{
 		          		id = "FullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onFullBathChange }
 		          	/>
 				</div>
 
@@ -39,6 +61,7 @@ class FormsPg13 extends Component{
 		          		id = "TotRmsAbvGrd" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onTotRmsAbvGrdChange }
 		          	/>
 				</div>
 
@@ -50,6 +73,7 @@ class FormsPg13 extends Component{
 		          		id = "2ndFlrSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.on2ndFlrSFChange }
 		          	/>
 				</div>
 			</div>

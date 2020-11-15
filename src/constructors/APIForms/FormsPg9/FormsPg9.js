@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg9 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onBsmtUnfSFChange = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtUnfSFVal(val);
+	}
+
+	onGarageCarsChange = (event) => {
+		let val = event.target.value;
+		this.props.setGarageCarsVal(val);
+	}
+
+	onBsmtFullBathChange = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtFullBathVal(val);
+	}
+
+	onYearBuiltChange = (event) => {
+		let val = event.target.value;
+		this.props.setYearBuiltVal(val);
 	}
 
 	render() {
@@ -17,6 +37,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtUnfSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onBsmtUnfSFChange }
 		          	/>
 				</div>
 
@@ -28,6 +49,7 @@ class FormsPg9 extends Component{
 		          		id = "GarageCars" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onGarageCarsChange }
 		          	/>
 				</div>
 
@@ -39,6 +61,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtFullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onBsmtFullBathChange }
 		          	/>
 				</div>
 
@@ -50,6 +73,7 @@ class FormsPg9 extends Component{
 		          		id = "YearBuilt" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onYearBuiltChange }
 		          	/>
 				</div>
 			</div>

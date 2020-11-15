@@ -2,8 +2,30 @@ import React , {Component} from 'react';
 
 class FormsPg1 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onLotShapeChange = (event) => {
+		let val = event.target.value;
+		this.props.setLotShapeVal(val);
+		document.getElementById("LotShape").value = val;
+
+	}
+
+	onSaleTypeChange = (event) => {
+		let val = event.target.value;
+		this.props.setSaleTypeVal(val);
+	}
+
+	onBsmtExposureChange = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtExposureVal(val);
+	}
+
+	onNeighborhoodChange = (event) => {
+		let val = event.target.value;
+		this.props.setNeighborhoodVal(val);
 	}
 
 	render() {
@@ -16,6 +38,7 @@ class FormsPg1 extends Component{
                 		name="LotShape" 
                 		id="LotShape"
                 		className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+                		onChange = { this.onLotShapeChange }
               		>
                 		<option value = "4"> Regular </option>
                 		<option value = "3"> Slightly Regular </option>
@@ -30,6 +53,7 @@ class FormsPg1 extends Component{
               			name="SaleType" 
               			id="SaleType"
               			className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+              			onChange = { this.onSaleTypeChange }
             		>
 		              <option value="SaleType_group3" title = "Warranty Deed - Conventional"> Conventional </option>
 		              <option value="SaleType_group1" title = "Warranty Deed - Cash"> Cash </option>
@@ -49,6 +73,7 @@ class FormsPg1 extends Component{
 		              name="BsmtExposure" 
 		              id="BsmtExposure"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onBsmtExposureChange }
             		>
 		              <option value= "4"> Good Exposure </option>
 		              <option value= "3"> Average Exposure </option>
@@ -64,6 +89,7 @@ class FormsPg1 extends Component{
 		              name="Neighborhood" 
 		              id="Neighborhood"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onNeighborhoodChange }
             		>
 		              <option value="Neighborhood_group1"> Bloomington Heights </option>
 		              <option value="Neighborhood_group2"> Bluestem </option>

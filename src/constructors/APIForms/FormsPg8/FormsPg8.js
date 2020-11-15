@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg8 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onGrLivAreaChange = (event) => {
+		let val = event.target.value;
+		this.props.setGrLivAreaVal(val);
+	}
+
+	onGarageAreaChange = (event) => {
+		let val = event.target.value;
+		this.props.setGarageAreaVal(val);
+	}
+
+	onEnclosedPorchChange = (event) => {
+		let val = event.target.value;
+		this.props.setEnclosedPorchVal(val);
+	}
+
+	onTotalBsmtSFChange = (event) => {
+		let val = event.target.value;
+		this.props.setTotalBsmtSFVal(val);
 	}
 
 	render() {
@@ -17,6 +37,7 @@ class FormsPg8 extends Component{
 		          		id = "GrLivArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onGrLivAreaChange }
 		          	/>
 				</div>
 
@@ -28,6 +49,7 @@ class FormsPg8 extends Component{
 		          		id = "GarageArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onGarageAreaChange }
 		          	/>
 		         </div>
 
@@ -39,6 +61,7 @@ class FormsPg8 extends Component{
 		          		id = "EnclosedPorch" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onEnclosedPorchChange }
 		          	/>
 				</div>
 
@@ -50,6 +73,7 @@ class FormsPg8 extends Component{
 		          		id = "TotalBsmtSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onTotalBsmtSFChange }
 		          	/>
 				</div>
 			</div>

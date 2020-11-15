@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg6 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onCentralAirChange = (event) => {
+		let val = event.target.value;
+		this.props.setCentralAirVal(val);
+	}
+
+	onFoundationChange = (event) => {
+		let val = event.target.value;
+		this.props.setFoundationVal(val);
+	}
+
+	onFunctionalChange = (event) => {
+		let val = event.target.value;
+		this.props.setFunctionalVal(val);
+	}
+
+	onHouseStyleChange = (event) => {
+		let val = event.target.value;
+		this.props.setHouseStyleVal(val);
 	}
 
 	render() {
@@ -15,6 +35,7 @@ class FormsPg6 extends Component{
 		              name="CentralAir"
 		              id="CentralAir"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onCentralAirChange }
        				>
 		              <option value= "1" > Yes</option>
 		              <option value= "0" > No </option>
@@ -27,6 +48,7 @@ class FormsPg6 extends Component{
 		              name="Foundation"
 		              id="Foundation"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onFoundationChange }
        				>
 		              <option value= "Foundation_group1" > Brick & Tile </option>
 		              <option value= "CBlock" > Cinder Block </option>
@@ -43,6 +65,7 @@ class FormsPg6 extends Component{
 		              name="Functional"
 		              id="Functional"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onFunctionalChange }
        				>
 		              <option value= "7" > Typical Functionality </option>
 		              <option value= "6" > Minor Deductions 1 </option>
@@ -61,6 +84,7 @@ class FormsPg6 extends Component{
 		              name="HouseStyle"
 		              id="HouseStyle"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onHouseStyleChange }
        				>
 		              <option value= "HouseStyle_group1" > One story </option>
 		              <option value= "1.5Fin" title = "One and one-half story (2nd level finished)" > One and one-half story I </option>

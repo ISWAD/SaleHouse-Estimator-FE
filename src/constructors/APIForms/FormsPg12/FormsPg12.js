@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg12 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onOpenPorchSFChange = (event) => {
+		let val = event.target.value;
+		this.props.setOpenPorchSFVal(val);
+	}
+
+	onBedroomAbvGrChange = (event) => {
+		let val = event.target.value;
+		this.props.setBedroomAbvGrVal(val);
+	}
+
+	onKitchenAbvGrChange = (event) => {
+		let val = event.target.value;
+		this.props.setKitchenAbvGrVal(val);
+	}
+
+	onScreenPorchChange = (event) => {
+		let val = event.target.value;
+		this.props.setScreenPorchVal(val);
 	}
 
 	render() {
@@ -17,6 +37,7 @@ class FormsPg12 extends Component{
 		          		id = "OpenPorchSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onOpenPorchSFChange }
 		          	/>
 				</div>
 
@@ -28,6 +49,7 @@ class FormsPg12 extends Component{
 		          		id = "BedroomAbvGr" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onBedroomAbvGrChange }
 		          	/>
 				</div>
 
@@ -39,6 +61,7 @@ class FormsPg12 extends Component{
 		          		id = "KitchenAbvGr" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onKitchenAbvGrChange }
 		          	/>
 				</div>
 
@@ -50,6 +73,7 @@ class FormsPg12 extends Component{
 		          		id = "ScreenPorch" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		onChange = { this.onScreenPorchChange }
 		          	/>
 				</div>
 			</div>

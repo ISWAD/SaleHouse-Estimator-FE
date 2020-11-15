@@ -2,8 +2,28 @@ import React , {Component} from 'react';
 
 class FormsPg4 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onBsmtCondChange = (event) => {
+		let val = event.target.value;
+		this.props.setBsmtCondVal(val);
+	}
+
+	onCondition1Change = (event) => {
+		let val = event.target.value;
+		this.props.setCondition1Val(val);
+	}
+
+	onHeatingQCChange = (event) => {
+		let val = event.target.value;
+		this.props.setHeatingQCVal(val);
+	}
+
+	onGarageTypeChange = (event) => {
+		let val = event.target.value;
+		this.props.setGarageTypeVal(val);
 	}
 
 	render() {
@@ -15,6 +35,7 @@ class FormsPg4 extends Component{
 		              name="BsmtCond"
 		              id="BsmtCond"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onBsmtCondChange }
        			>
 		              <option value= "4" > Good </option>
 		              <option value= "3" > Typical</option>
@@ -30,6 +51,7 @@ class FormsPg4 extends Component{
 		              name="Condition1"
 		              id="Condition1"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onCondition1Change }
        				>
 		              <option value= "Condition1_group1" > Adjacent to arterial street </option>
 		              <option value= "Condition1_group3" > Adjacent to feeder street </option>
@@ -49,6 +71,7 @@ class FormsPg4 extends Component{
 		              name="HeatingQC"
 		              id="HeatingQC"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onHeatingQCChange }
        			>
 	                  <option value= "5" > Excellent </option>
 	              	  <option value= "4" > Good </option>
@@ -64,6 +87,7 @@ class FormsPg4 extends Component{
 		              name="GarageType"
 		              id="GarageType"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onGarageTypeChange }
        				>
 		              <option value= "GarageType_group1" > More than one type of garage </option>
 		              <option value= "Attchd" > Attached to home </option>

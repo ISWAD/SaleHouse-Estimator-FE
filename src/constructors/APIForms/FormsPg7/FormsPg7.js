@@ -2,8 +2,23 @@ import React , {Component} from 'react';
 
 class FormsPg7 extends Component{
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
+	}
+
+	onMSZoningChange = (event) => {
+		let val = event.target.value;
+		this.props.setMSZoningVal(val);
+	}
+
+	onExterior1stChange = (event) => {
+		let val = event.target.value;
+		this.props.setExterior1stVal(val);
+	}
+
+	onGarageFinishChange = (event) => {
+		let val = event.target.value;
+		this.props.setGarageFinishVal(val);
 	}
 
 	render() {
@@ -15,6 +30,7 @@ class FormsPg7 extends Component{
 		              name="MSZoning"
 		              id="MSZoning"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onMSZoningChange }
        				>
 		              <option value= "MSZoning_group1" > Agriculture </option>
 		              <option value= "C (all)" > Commercial </option>
@@ -34,6 +50,7 @@ class FormsPg7 extends Component{
 		              name="Exterior1st" 
 		              id="Exterior1st"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onExterior1stChange }
        				>
 		              <option value= "AsbShng"> Asbestos Shingles </option>
 		              <option value= "Exterior1st_group1"> Asphalt Shingles </option>
@@ -61,6 +78,7 @@ class FormsPg7 extends Component{
 		              name="GarageFinish"
 		              id="GarageFinish"
 		              className="pa2 ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
+		              onChange = { this.onGarageFinishChange }
        				>
 		              <option value= "3" > Finished </option>
 		              <option value= "2" > Rough Finished </option>
