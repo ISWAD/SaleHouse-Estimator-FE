@@ -60,7 +60,7 @@ class Login extends Component {
   render() {
     
     return(
-      <div>
+      <div className = "dialog">
         
         <div className = "FormContainer">
         <div className = "InputContainer">

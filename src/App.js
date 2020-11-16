@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 import Frame from "./components/Frame/Frame.js";
 import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
@@ -9,6 +11,7 @@ import Register from './constructors/Register/Register.js';
 import Login from './constructors/Login/Login.js';
 import Account from './constructors/Account/Account.js';
 import Estimator from './constructors/Estimator/Estimator.js';
+import bg from './statics/bg-img2.jpg';
 import './App.css';
 
 
@@ -19,9 +22,12 @@ const initialState = {
                       width: 0, 
                       height: 0, 
                       user_loggedIn: false, 
-                      pageIn: "Estimator",
                       mobNavShow: false,
                       alertMsg: [],
+                      estimatorIsOpen: true,
+                      registerIsOpen: false,
+                      loginisOpen: false,
+                      accountIsOpen: false,
                       user: {
                         id: '',
                         name: '',
@@ -51,13 +57,58 @@ class App extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
+  onRouteChange = (Route) => {
+    if (Route === 'Estimator') {
+      this.onRegisterClose();
+      this.onLoginClose();
+      this.onAccountClose();
+      setTimeout(() => this.setState({ 
+        estimatorIsOpen: true,
+        registerIsOpen: false,
+        loginIsOpen: false,
+        accountIsOpen: false }), 
+      300);
+    } else if (Route === 'Register') {
+      this.onEstimatorClose();
+      this.onLoginClose();
+      this.onAccountClose();
+      setTimeout(() => this.setState({ 
+        estimatorIsOpen: false,
+        registerIsOpen: true,
+        loginIsOpen: false,
+        accountIsOpen: false }), 
+      300);
+    } else if (Route === 'Login') {
+      this.onEstimatorClose();
+      this.onRegisterClose();
+      this.onAccountClose();
+      setTimeout(() => this.setState({ 
+        estimatorIsOpen: false,
+        registerIsOpen: false,
+        loginIsOpen: true,
+        accountIsOpen: false }), 
+      300);
+    } else if (Route === 'My Account') {
+      this.onEstimatorClose();
+      this.onRegisterClose();
+      this.onLoginClose();
+      setTimeout(() => this.setState({ 
+        estimatorIsOpen: false,
+        registerIsOpen: false,
+        loginIsOpen: false,
+        accountIsOpen: true }), 
+      300);
+    }
+  }
+
   onNavClick = (event) => {
-    this.setState({pageIn: event.target.innerHTML});
+    let pageIn = event.target.innerHTML.trim();
+    this.onRouteChange(pageIn);
     document.getElementsByClassName("HeadPart")[0].style.height = "150px";
     this.setState({mobNavShow: false});
-    if (event.target.innerHTML.trim() === "Logout"){
+    if (pageIn === "Logout"){
       this.setState({user_loggedIn: false});
-      this.setState({pageIn: "Estimator"});
+      this.onRouteChange("Estimator");
     }
     this.removeAlert();
   }
@@ -70,10 +121,6 @@ class App extends Component {
       document.getElementsByClassName("HeadPart")[0].style.height = "250px";
       this.setState({mobNavShow: true});
     }
-  }
-
-  onRouteChange = (Route) => {
-    this.setState({pageIn: Route});
   }
 
   onLoadUser = (userId, userName, userCommentsNum) => {
@@ -101,24 +148,39 @@ class App extends Component {
     this.setState({alertMsg: []});
   }
 
+  onEstimatorClose = () => {
+    this.setState({estimatorIsOpen: false});
+  }
+
+  onRegisterClose = () => {
+    this.setState({registerIsOpen: false});
+  }
+
+  onLoginClose = () => {
+    this.setState({loginIsOpen: false});
+  }
+
+  onAccountClose = () => {
+    this.setState({accountIsOpen: false});
+  }
+
   render() {
     return(
       <div>
+      <img className = "bg" src = {bg}/>
       <div className = "container">
       <div className = "HeadPart">
         <Frame>
           <Logo />
           {this.state.width >= 900 &&
             <Nav 
-              user_loggedIn = { this.state.user_loggedIn } 
-              pageIn = { this.state.pageIn } 
+              user_loggedIn = { this.state.user_loggedIn }  
               onNavClick = { this.onNavClick }
             />
           }
           {this.state.width < 900 &&
             <MobNav 
               user_loggedIn = { this.state.user_loggedIn } 
-              pageIn = { this.state.pageIn } 
               mobNavShow = { this.state.mobNavShow }
               onNavClick = { this.onNavClick } 
               onMobNavButtonClick = { this.onMobNavButtonClick }
@@ -127,43 +189,69 @@ class App extends Component {
         </Frame>
       </div>
       <div className = "MainPart">
-      {this.state.alertMsg.length > 0 &&
-      <Alert alertMsg = { this.state.alertMsg }/>
-      }
-      {this.state.pageIn.trim() === "Estimator" &&
-        <Estimator 
-          alertMsgChanged = { this.alertMsgChanged }
-          removeAlert = { this.removeAlert }
-        />
-      }
-      {this.state.pageIn.trim() === "Register" &&
-        <Register 
-          onRouteChange = { this.onRouteChange } 
-          alertMsgChanged = { this.alertMsgChanged } 
-          removeAlert = { this.removeAlert }
-          onLoadUser = { this.onLoadUser}
-          appServer = { appServer }
-        />
-      }
-      {this.state.pageIn.trim() === "Login" &&
-        <Login 
-          onRouteChange = { this.onRouteChange }
-          alertMsgChanged = { this.alertMsgChanged } 
-          removeAlert = { this.removeAlert }
-          onLoadUser = { this.onLoadUser}
-          appServer = { appServer }
-        />
-      }
-      {this.state.pageIn.trim() === "My Account" &&
-        <Account 
-          appServer = { appServer }
-          userId = {this.state.user.id}
-          userName = {this.state.user.name}
-          userCommentsNum = {this.state.user.commentsNum}
-          removeAlert = { this.removeAlert }
-          alertMsgChanged = { this.alertMsgChanged }
-        />
-      }
+      <TransitionGroup component={null}>
+        {this.state.alertMsg.length > 0 && (
+          <CSSTransition classNames="dialog" timeout={200}>
+            <Alert alertMsg = { this.state.alertMsg }/>
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+      
+
+      <TransitionGroup component={null}>
+        {this.state.estimatorIsOpen && (
+          <CSSTransition classNames="dialog" timeout={300}>
+            <Estimator 
+              alertMsgChanged = { this.alertMsgChanged }
+              removeAlert = { this.removeAlert }
+            />
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+
+      <TransitionGroup component={null}>
+        {this.state.registerIsOpen && (
+          <CSSTransition classNames="dialog" timeout={300}>
+            <Register 
+              onRouteChange = { this.onRouteChange } 
+              alertMsgChanged = { this.alertMsgChanged } 
+              removeAlert = { this.removeAlert }
+              onLoadUser = { this.onLoadUser}
+              appServer = { appServer }
+            />
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+      
+      <TransitionGroup component={null}>
+        {this.state.loginIsOpen && (
+          <CSSTransition classNames="dialog" timeout={300}>
+            <Login 
+              onRouteChange = { this.onRouteChange }
+              alertMsgChanged = { this.alertMsgChanged } 
+              removeAlert = { this.removeAlert }
+              onLoadUser = { this.onLoadUser}
+              appServer = { appServer }
+            />
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+  
+      <TransitionGroup component={null}>
+        {this.state.accountIsOpen && (
+          <CSSTransition classNames="dialog" timeout={300}>
+            <Account 
+              appServer = { appServer }
+              userId = {this.state.user.id}
+              userName = {this.state.user.name}
+              userCommentsNum = {this.state.user.commentsNum}
+              removeAlert = { this.removeAlert }
+              alertMsgChanged = { this.alertMsgChanged }
+            />
+          </CSSTransition>
+        )}
+      </TransitionGroup>
+
       </div>
       </div>
       <Footer />

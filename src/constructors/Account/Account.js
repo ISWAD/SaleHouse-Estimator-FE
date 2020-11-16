@@ -46,7 +46,7 @@ class Account extends Component {
   render() {
     
     return(
-      <div>
+      <div className = "dialog FormContainer">
         <h1 className = "f5 shadow-2 Alert pa3" style = {{width: "90%"}}>
         Hi {this.props.userName}, you have shared {this.state.userCommentsNum} comments with us; please let us know more about your experience with our app.
         </h1>

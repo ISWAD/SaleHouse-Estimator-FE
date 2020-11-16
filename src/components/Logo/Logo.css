@@ -1,15 +1,27 @@
-img{
-	opacity: 1;
-	/*border: solid 1px;
-	border-radius: 10%;
-	border-color: white;*/
-	opacity: 0.8;
-	animation: spin 10s linear infinite;
-}
-
 .imgFrame{
 	display: flex;
 	width: auto;
+}
+
+.Tilt {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.Logo {
+  position: relative;
+  top: 15px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+.Type {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 150px;
+  animation: spin 10s linear infinite;
 }
 
 @keyframes spin{

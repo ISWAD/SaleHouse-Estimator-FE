@@ -20,12 +20,42 @@
 }
 
 .MainPart{
-	margin: 0 auto;
+	margin: 10px auto;
 	width: 90%;
+	height: 50vh;
 	padding: 20px;
-	text-align: center;
-	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 	margin-bottom: 60px;
+	color: white;
+}
+
+.MainPart > div{
+	width: 100%;
+}
+
+.dialog-enter {
+  opacity: 0.01;
+  transform: scale(1.05);
+}
+
+.dialog-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms;
+}
+
+.dialog-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dialog-exit-active {
+  opacity: 0.01;
+  transform: scale(1.1);
+  transition: all 300ms;
 }
 
 

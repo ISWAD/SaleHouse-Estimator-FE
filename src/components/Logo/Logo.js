@@ -1,14 +1,16 @@
 import React from 'react';
 import Tilt from 'react-tilt';
-import logo from './SALE-2-B-T C.png';
+import logo from './Logo.png';
+import text from './Type.png';
 import './Logo.css';
 
 const Logo = () => {
 	return(
-		<Tilt className="Tilt" options={{ max : 55 }} style={{ height: 125, width: 125 }} >
+		<Tilt className="Tilt" options={{ max : 55 }} style={{ height: 150, width: 150 }} >
 		<div className='mt0 imgFrame'>
 				<div className="Tilt-inner">
-					<img alt='logo' src={logo}/>
+					<img alt='logo' className = "Logo" src={logo}/>
+					<img alt='logo' className = "Type" src={text}/>
 				</div>
 		</div>
 		</Tilt>

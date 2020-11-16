@@ -15,7 +15,7 @@ const Nav = ({ user_loggedIn, pageIn, onNavClick }) => {
 		<nav>
 			<ul className = "f4 ma0 pa0 shadow-2 deskNav">
 				{navMenu.map((item, idx) => {
-					if (item === pageIn.trim()) {
+					if (item === pageIn) {
 						return <li style = {{ color: 'yellow' }} className = "deskNavList" key = {idx} onClick = {onNavClick}> {item} </li>;
 					} else {
 						return <li className = "deskNavList" key = {idx} onClick = {onNavClick}> {item} </li>;

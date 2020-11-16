@@ -108,7 +108,7 @@ class Register extends Component {
   render() {
     
     return(
-      <div>
+      <div className = "dialog">
         <div className = "FormContainer">
         <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "firstname"> First Name </label>
