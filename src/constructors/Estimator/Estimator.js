@@ -18,7 +18,7 @@ import './Estimator.css';
 
 let msgselect = "If your desired option is not in our list you can choose Other. However, if you inform us through your account we can better assist you!";
 let msgtxt = "If your values are out of the range inside the brackets our app may not predicts well, in this case you are advised to inform us through your account so that we can assist you!";
-let msgtxt2 = "For items that are not existing in your desired apartment, just enter 0"
+let msgtxt2 = "For items that are not existing in your desired apartment, just enter 0";
 
 const initialState = {
                       LotShape: '4',

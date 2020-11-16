@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let GrLivAreaval = '';
+let GarageAreaval = '';
+let EnclosedPorchval = '';
+let TotalBsmtSFval = '';
+
 class FormsPg8 extends Component{
 	
 	constructor(props){
@@ -7,23 +15,39 @@ class FormsPg8 extends Component{
 	}
 
 	onGrLivAreaChange = (event) => {
-		let val = event.target.value;
-		this.props.setGrLivAreaVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			GrLivAreaval = event.target.value;
+			this.props.setGrLivAreaVal(GrLivAreaval);
+		} else {
+			document.getElementById("GrLivArea").value = GrLivAreaval;
+		}
 	}
 
 	onGarageAreaChange = (event) => {
-		let val = event.target.value;
-		this.props.setGarageAreaVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			GarageAreaval = event.target.value;
+			this.props.setGarageAreaVal(GarageAreaval);
+		} else {
+			document.getElementById("GarageArea").value = GarageAreaval;
+		}
 	}
 
 	onEnclosedPorchChange = (event) => {
-		let val = event.target.value;
-		this.props.setEnclosedPorchVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			EnclosedPorchval = event.target.value;
+			this.props.setEnclosedPorchVal(EnclosedPorchval);
+		} else {
+			document.getElementById("EnclosedPorch").value = EnclosedPorchval;
+		}
 	}
 
 	onTotalBsmtSFChange = (event) => {
-		let val = event.target.value;
-		this.props.setTotalBsmtSFVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			TotalBsmtSFval = event.target.value;
+			this.props.setTotalBsmtSFVal(TotalBsmtSFval);
+		} else {
+			document.getElementById("TotalBsmtSF").value = TotalBsmtSFval;
+		}
 	}
 
 	render() {
@@ -37,6 +61,7 @@ class FormsPg8 extends Component{
 		          		id = "GrLivArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onGrLivAreaChange }
 		          	/>
 				</div>
@@ -49,6 +74,7 @@ class FormsPg8 extends Component{
 		          		id = "GarageArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onGarageAreaChange }
 		          	/>
 		         </div>
@@ -61,6 +87,7 @@ class FormsPg8 extends Component{
 		          		id = "EnclosedPorch" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onEnclosedPorchChange }
 		          	/>
 				</div>
@@ -73,6 +100,7 @@ class FormsPg8 extends Component{
 		          		id = "TotalBsmtSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onTotalBsmtSFChange }
 		          	/>
 				</div>

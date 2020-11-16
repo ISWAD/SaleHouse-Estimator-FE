@@ -4,9 +4,15 @@ img{
 	border-radius: 10%;
 	border-color: white;*/
 	opacity: 0.8;
+	animation: spin 10s linear infinite;
 }
 
 .imgFrame{
 	display: flex;
 	width: auto;
+}
+
+@keyframes spin{
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

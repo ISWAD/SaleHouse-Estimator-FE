@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let Fireplacesval = '';
+let LotFrontageval = '';
+let BsmtFinSF1val = '';
+let YearRemodAddval = '';
+
 class FormsPg11 extends Component{
 	
 	constructor(props){
@@ -7,23 +15,39 @@ class FormsPg11 extends Component{
 	}
 
 	onFireplacesChange = (event) => {
-		let val = event.target.value;
-		this.props.setFireplacesVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			Fireplacesval = event.target.value;
+			this.props.setFireplacesVal(Fireplacesval);
+		} else {
+			document.getElementById("Fireplaces").value = Fireplacesval;
+		}
 	}
 
 	onLotFrontageChange = (event) => {
-		let val = event.target.value;
-		this.props.setLotFrontageVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			LotFrontageval = event.target.value;
+			this.props.setLotFrontageVal(LotFrontageval);
+		} else {
+			document.getElementById("LotFrontage").value = LotFrontageval;
+		}
 	}
 
 	onBsmtFinSF1Change = (event) => {
-		let val = event.target.value;
-		this.props.setBsmtFinSF1Val(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			BsmtFinSF1val = event.target.value;
+			this.props.setBsmtFinSF1Val(BsmtFinSF1val);
+		} else {
+			document.getElementById("BsmtFinSF1").value = BsmtFinSF1val;
+		}
 	}
 
 	onYearRemodAddChange = (event) => {
-		let val = event.target.value;
-		this.props.setYearRemodAddVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			YearRemodAddval = event.target.value;
+			this.props.setYearRemodAddVal(YearRemodAddval);
+		} else {
+			document.getElementById("YearRemodAdd").value = YearRemodAddval;
+		}
 	}
 
 	render() {
@@ -37,6 +61,7 @@ class FormsPg11 extends Component{
 		          		id = "Fireplaces" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onFireplacesChange }
 		          	/>
 				</div>
@@ -49,6 +74,7 @@ class FormsPg11 extends Component{
 		          		id = "LotFrontage" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onLotFrontageChange }
 		          	/>
 				</div>
@@ -61,6 +87,7 @@ class FormsPg11 extends Component{
 		          		id = "BsmtFinSF1" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onBsmtFinSF1Change }
 		          	/>
 				</div>
@@ -73,6 +100,7 @@ class FormsPg11 extends Component{
 		          		id = "YearRemodAdd" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onYearRemodAddChange }
 		          	/>
 				</div>

@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let WoodDeckSFval = '';
+let FullBathval = '';
+let TotRmsAbvGrdval = '';
+let SecondFlrSFval = '';
+
 class FormsPg13 extends Component{
 	
 	constructor(props){
@@ -7,21 +15,39 @@ class FormsPg13 extends Component{
 	}
 
 	onWoodDeckSFChange = (event) => {
-		let val = event.target.value;
-		this.props.setWoodDeckSFVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			WoodDeckSFval = event.target.value;
+			this.props.setWoodDeckSFVal(WoodDeckSFval);
+		} else {
+			document.getElementById("WoodDeckSF").value = WoodDeckSFval;
+		}
 	}
 
 	onFullBathChange = (event) => {
-		let val = event.target.value;
-		this.props.setFullBathVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			FullBathval = event.target.value;
+			this.props.setFullBathVal(FullBathval);
+		} else {
+			document.getElementById("FullBath").value = FullBathval;
+		}
 	}
 
 	onTotRmsAbvGrdChange = (event) => {
-		let val = event.target.value;
-		this.props.setTotRmsAbvGrdVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			TotRmsAbvGrdval = event.target.value;
+			this.props.setTotRmsAbvGrdVal(TotRmsAbvGrdval);
+		} else {
+			document.getElementById("TotRmsAbvGrd").value = TotRmsAbvGrdval;
+		}
 	}
 
 	on2ndFlrSFChange = (event) => {
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			SecondFlrSFval = event.target.value;
+			this.props.set2ndFlrSFVal(SecondFlrSFval);
+		} else {
+			document.getElementById("2ndFlrSF").value = SecondFlrSFval;
+		}
 		let val = event.target.value;
 		this.props.set2ndFlrSFVal(val);
 	}
@@ -37,6 +63,7 @@ class FormsPg13 extends Component{
 		          		id = "WoodDeckSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onWoodDeckSFChange }
 		          	/>
 				</div>
@@ -49,6 +76,7 @@ class FormsPg13 extends Component{
 		          		id = "FullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onFullBathChange }
 		          	/>
 				</div>
@@ -61,6 +89,7 @@ class FormsPg13 extends Component{
 		          		id = "TotRmsAbvGrd" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onTotRmsAbvGrdChange }
 		          	/>
 				</div>
@@ -73,6 +102,7 @@ class FormsPg13 extends Component{
 		          		id = "2ndFlrSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.on2ndFlrSFChange }
 		          	/>
 				</div>

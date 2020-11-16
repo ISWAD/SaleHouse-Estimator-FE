@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let BsmtUnfSFval = '';
+let GarageCarsval = '';
+let BsmtFullBathval = '';
+let YearBuiltval = '';
+
 class FormsPg9 extends Component{
 	
 	constructor(props){
@@ -7,23 +15,39 @@ class FormsPg9 extends Component{
 	}
 
 	onBsmtUnfSFChange = (event) => {
-		let val = event.target.value;
-		this.props.setBsmtUnfSFVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			BsmtUnfSFval = event.target.value;
+			this.props.setBsmtUnfSFVal(BsmtUnfSFval);
+		} else {
+			document.getElementById("BsmtUnfSF").value = BsmtUnfSFval;
+		}
 	}
 
 	onGarageCarsChange = (event) => {
-		let val = event.target.value;
-		this.props.setGarageCarsVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			GarageCarsval = event.target.value;
+			this.props.setGarageCarsVal(GarageCarsval);
+		} else {
+			document.getElementById("GarageCars").value = GarageCarsval;
+		}
 	}
 
 	onBsmtFullBathChange = (event) => {
-		let val = event.target.value;
-		this.props.setBsmtFullBathVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			BsmtFullBathval = event.target.value;
+			this.props.setBsmtFullBathVal(BsmtFullBathval);
+		} else {
+			document.getElementById("BsmtFullBath").value = BsmtFullBathval;
+		}
 	}
 
 	onYearBuiltChange = (event) => {
-		let val = event.target.value;
-		this.props.setYearBuiltVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			YearBuiltval = event.target.value;
+			this.props.setYearBuiltVal(YearBuiltval);
+		} else {
+			document.getElementById("YearBuilt").value = YearBuiltval;
+		}
 	}
 
 	render() {
@@ -37,6 +61,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtUnfSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onBsmtUnfSFChange }
 		          	/>
 				</div>
@@ -49,6 +74,7 @@ class FormsPg9 extends Component{
 		          		id = "GarageCars" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onGarageCarsChange }
 		          	/>
 				</div>
@@ -61,6 +87,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtFullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onBsmtFullBathChange }
 		          	/>
 				</div>
@@ -73,6 +100,7 @@ class FormsPg9 extends Component{
 		          		id = "YearBuilt" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onYearBuiltChange }
 		          	/>
 				</div>

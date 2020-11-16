@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let MasVnrAreaval = '';
+let GarageYrBltval = '';
+let LotAreaval = '';
+let HalfBathval = '';
+
 class FormsPg10 extends Component{
 	
 	constructor(props){
@@ -7,23 +15,39 @@ class FormsPg10 extends Component{
 	}
 
 	onMasVnrAreaChange = (event) => {
-		let val = event.target.value;
-		this.props.setMasVnrAreaVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			MasVnrAreaval = event.target.value;
+			this.props.setMasVnrAreaVal(MasVnrAreaval);
+		} else {
+			document.getElementById("MasVnrArea").value = MasVnrAreaval;
+		}
 	}
 
 	onGarageYrBltChange = (event) => {
-		let val = event.target.value;
-		this.props.setGarageYrBltVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			GarageYrBltval = event.target.value;
+			this.props.setGarageYrBltVal(GarageYrBltval);
+		} else {
+			document.getElementById("GarageYrBlt").value = GarageYrBltval;
+		}
 	}
 
 	onLotAreaChange = (event) => {
-		let val = event.target.value;
-		this.props.setLotAreaVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			LotAreaval = event.target.value;
+			this.props.setLotAreaVal(LotAreaval);
+		} else {
+			document.getElementById("LotArea").value = LotAreaval;
+		}
 	}
 
 	onHalfBathChange = (event) => {
-		let val = event.target.value;
-		this.props.setHalfBathVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			HalfBathval = event.target.value;
+			this.props.setHalfBathVal(HalfBathval);
+		} else {
+			document.getElementById("HalfBath").value = HalfBathval;
+		}
 	}
 
 	render() {
@@ -37,6 +61,7 @@ class FormsPg10 extends Component{
 		          		id = "MasVnrArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onMasVnrAreaChange }
 		          	/>
 				</div>
@@ -49,6 +74,7 @@ class FormsPg10 extends Component{
           				id = "GarageYrBlt" 
           				className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           				style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+          				placeholder="Just enter a valid number, like 12.34"
           				onChange = { this.onGarageYrBltChange }
           			/>
 				</div>
@@ -61,6 +87,7 @@ class FormsPg10 extends Component{
 		          		id = "LotArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onLotAreaChange }
 		          	/>
 				</div>
@@ -73,6 +100,7 @@ class FormsPg10 extends Component{
 		          		id = "HalfBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onHalfBathChange }
 		          	/>
 				</div>

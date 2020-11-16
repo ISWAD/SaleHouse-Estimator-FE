@@ -1,5 +1,13 @@
 import React , {Component} from 'react';
 
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let OpenPorchSFval = '';
+let BedroomAbvGrval = '';
+let KitchenAbvGrval = '';
+let ScreenPorchval = '';
+
 class FormsPg12 extends Component{
 	
 	constructor(props){
@@ -7,23 +15,39 @@ class FormsPg12 extends Component{
 	}
 
 	onOpenPorchSFChange = (event) => {
-		let val = event.target.value;
-		this.props.setOpenPorchSFVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			OpenPorchSFval = event.target.value;
+			this.props.setOpenPorchSFVal(OpenPorchSFval);
+		} else {
+			document.getElementById("OpenPorchSF").value = OpenPorchSFval;
+		}
 	}
 
 	onBedroomAbvGrChange = (event) => {
-		let val = event.target.value;
-		this.props.setBedroomAbvGrVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			BedroomAbvGrval = event.target.value;
+			this.props.setBedroomAbvGrVal(BedroomAbvGrval);
+		} else {
+			document.getElementById("BedroomAbvGr").value = BedroomAbvGrval;
+		}
 	}
 
 	onKitchenAbvGrChange = (event) => {
-		let val = event.target.value;
-		this.props.setKitchenAbvGrVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			KitchenAbvGrval = event.target.value;
+			this.props.setKitchenAbvGrVal(KitchenAbvGrval);
+		} else {
+			document.getElementById("KitchenAbvGr").value = KitchenAbvGrval;
+		}
 	}
 
 	onScreenPorchChange = (event) => {
-		let val = event.target.value;
-		this.props.setScreenPorchVal(val);
+		if (re.test(event.target.value) || re2.test(event.target.value)) {
+			ScreenPorchval = event.target.value;
+			this.props.setScreenPorchVal(ScreenPorchval);
+		} else {
+			document.getElementById("ScreenPorch").value = ScreenPorchval;
+		}
 	}
 
 	render() {
@@ -37,6 +61,7 @@ class FormsPg12 extends Component{
 		          		id = "OpenPorchSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onOpenPorchSFChange }
 		          	/>
 				</div>
@@ -49,6 +74,7 @@ class FormsPg12 extends Component{
 		          		id = "BedroomAbvGr" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onBedroomAbvGrChange }
 		          	/>
 				</div>
@@ -61,6 +87,7 @@ class FormsPg12 extends Component{
 		          		id = "KitchenAbvGr" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onKitchenAbvGrChange }
 		          	/>
 				</div>
@@ -73,6 +100,7 @@ class FormsPg12 extends Component{
 		          		id = "ScreenPorch" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
+		          		placeholder="Just enter a valid number, like 12.34"
 		          		onChange = { this.onScreenPorchChange }
 		          	/>
 				</div>

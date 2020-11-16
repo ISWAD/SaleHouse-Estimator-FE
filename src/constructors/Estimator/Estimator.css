@@ -14,3 +14,18 @@ label{
 	margin-top: auto;
 	align-self: flex-end;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: yellow;
+  opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: yellow;
+  opacity: 0.5;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: yellow;
+  opacity: 0.5;
+}
