@@ -9,8 +9,7 @@ const Welcome = ({ onWlcomeBtnClick }) => {
 				<h1 className = "f4">Welcome!</h1>
 				<div>
 					This is an intelligent web app, designed by ISWAD, to estimate the sale price of houses in U.S.A.
-					The freely available dataset on <a href = "https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">Kaggele</a> 
-					is used to train the estimator model.
+					The freely available dataset on <a href = "https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data">Kaggele</a> is used to train the estimator model.
 					
 					If you need any other infrormation about our services you can call us at +1(226)977-0855 or send us an email.
 					<p>Enjoy!</p>

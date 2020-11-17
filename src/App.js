@@ -73,6 +73,19 @@ class App extends Component {
         isWelcomePgOpen: false,
         pageIn: 'Estimator' }), 
       1000);
+    } else if (Route === 'Welcome') {
+      this.onEstimatorClose();
+      this.onLoginClose();
+      this.onAccountClose();
+      this.onRegisterClose();
+      setTimeout(() => this.setState({ 
+        estimatorIsOpen: false,
+        registerIsOpen: false,
+        loginIsOpen: false,
+        accountIsOpen: false,
+        isWelcomePgOpen: true,
+        pageIn: 'Welcome' }), 
+      1000);
     } else if (Route === 'Register') {
       this.onEstimatorClose();
       this.onLoginClose();
@@ -122,7 +135,7 @@ class App extends Component {
     this.setState({mobNavShow: false});
     if (pageIn === "Logout"){
       this.setState({user_loggedIn: false});
-      this.onRouteChange("Estimator");
+      this.onRouteChange("Welcome");
     }
     this.removeAlert();
   }
