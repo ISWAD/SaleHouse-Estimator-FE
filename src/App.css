@@ -17,6 +17,15 @@
 	display: flex;
 	justify-content: space-between;
 	height: 150px;
+	transition: height 500ms;
+}
+
+.mobBotOpened{
+	height: 250px;
+}
+
+.mobBotClosed{
+	height: 150px;
 }
 
 .MainPart{
@@ -28,6 +37,8 @@
 	align-items: center;
 	flex-wrap: wrap;
 	color: white;
+	text-align: center;
+	overflow: hidden;
 }
 
 .MainPart > div{
@@ -36,12 +47,12 @@
 
 .dialog-enter {
 	opacity: 0.01;
-	transform: translateY(25vh);
+	transform: translateX(50vh);
 }
 
 .dialog-enter-active {
   opacity: 1;
-  transform: translateY(0px);
+  transform: translateX(0px);
   transition: all 1000ms;
 }
 
@@ -52,11 +63,9 @@
 
 .dialog-exit-active {
   opacity: 0.01;
-  transform: translateY(-25vh);
+  transform: translateY(-50vh);
   transition: all 1000ms;
 }
-
-
 
 
 .headPA-enter {
@@ -76,6 +85,45 @@
 .headPA-exit-active {
   height: 150px;
   transition: all 300ms;
+}
+
+
+
+
+.alertAnim-enter {
+	opacity: 0.01;
+}
+
+.alertAnim-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.alertAnim-exit {
+	opacity: 1;
+}
+
+.alertAnim-exit-active {
+  opacity: 0.01;
+  transition: all 500ms;
+}
+
+.AlertPlace{
+	height: 0px;
+	transition: height 1500ms;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.AlertOpened{
+	height: 150px;
+}
+
+.AlertClosed{
+	height: 0px;
 }
 
 

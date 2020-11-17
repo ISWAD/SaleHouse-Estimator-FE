@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Fade from 'react-reveal/Fade';
 
 import FormsPg1 from '../APIForms/FormsPg1/FormsPg1.js';
 import FormsPg2 from '../APIForms/FormsPg2/FormsPg2.js';
@@ -298,90 +299,130 @@ class Estimator extends Component {
     
     return(
       <div className = "Forms dialog">
+            <Fade left>
             <FormsPg1
               setLotShapeVal = { this.setLotShapeVal }
               setSaleTypeVal = { this.setSaleTypeVal }
               setBsmtExposureVal = { this.setBsmtExposureVal }
               setNeighborhoodVal = { this.setNeighborhoodVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg2
               setFireplaceQuVal = { this.setFireplaceQuVal }
               setPavedDriveVal = { this.setPavedDriveVal }
               setSaleConditionVal = { this.setSaleConditionVal }
               setExterior2ndVal = { this.setExterior2ndVal }
            />
+           </Fade>
+
+            <Fade left>
             <FormsPg3 
               setElectricalVal = { this.setFireplaceQuVal }
               setOverallQualVal = { this.setPavedDriveVal }
               setMasVnrTypeVal = { this.setSaleConditionVal }
               setExterQualVal = { this.setExterior2ndVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg4
               setBsmtCondVal = { this.setBsmtCondVal }
               setCondition1Val = { this.setCondition1Val }
               setHeatingQCVal = { this.setHeatingQCVal }
               setGarageTypeVal = { this.setGarageTypeVal } 
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg5 
               setBsmtFinType1Val = { this.setBsmtFinType1Val }
               setOverallCondVal = { this.setOverallCondVal }
               setBsmtQualVal = { this.setBsmtQualVal }
               setKitchenQualVal = { this.setKitchenQualVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg6 
               setCentralAirVal = { this.setCentralAirVal }
               setFoundationVal = { this.setFoundationVal }
               setFunctionalVal = { this.setFunctionalVal }
               setHouseStyleVal = { this.setHouseStyleVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg7 
               setMSZoningVal = { this.setMSZoningVal }
               setExterior1stVal = { this.setExterior1stVal }
               setGarageFinishVal = { this.setGarageFinishVal }
             />
+            </Fade>
 
+            <Fade left>
             <FormsPg8
               setGrLivAreaVal = { this.setGrLivAreaVal }
               setGarageAreaVal = { this.setGarageAreaVal }
               setEnclosedPorchVal = { this.setEnclosedPorchVal }
               setTotalBsmtSFVal = { this.setTotalBsmtSFVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg9
               setBsmtUnfSFVal = { this.setBsmtUnfSFVal }
               setGarageCarsVal = { this.setGarageCarsVal }
               setBsmtFullBathVal = { this.setBsmtFullBathVal }
               setYearBuiltVal = { this.setYearBuiltVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg10
               setMasVnrAreaVal = { this.setMasVnrAreaVal }
               setGarageYrBltVal = { this.setGarageYrBltVal }
               setLotAreaVal = { this.setLotAreaVal }
               setHalfBathVal = { this.setHalfBathVal } 
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg11
               setFireplacesVal = { this.setFireplacesVal }
               setLotFrontageVal = { this.setLotFrontageVal }
               setBsmtFinSF1Val = { this.setBsmtFinSF1Val }
               setYearRemodAddVal = { this.setYearRemodAddVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg12
               setOpenPorchSFVal = { this.setOpenPorchSFVal }
               setBedroomAbvGrVal = { this.setBedroomAbvGrVal }
               setKitchenAbvGrVal = { this.setKitchenAbvGrVal }
               setScreenPorchVal = { this.setScreenPorchVal }
             />
+            </Fade>
+
+            <Fade left>
             <FormsPg13
               setWoodDeckSFVal = { this.setWoodDeckSFVal }
               setFullBathVal = { this.setFullBathVal }
               setTotRmsAbvGrdVal = { this.setTotRmsAbvGrdVal }
               set2ndFlrSFVal = { this.set2ndFlrSFVal } 
             />
+            </Fade>
+
+            <Fade left>
             <input
               className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple SubmitBtn"
               type="submit"
               value="Submit"
               style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
             />
+            </Fade>
       </div>
     )
 

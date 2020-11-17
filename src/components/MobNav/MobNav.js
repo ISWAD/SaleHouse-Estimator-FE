@@ -22,7 +22,7 @@ const MobNav = ({ user_loggedIn, pageIn, mobNavShow, onNavClick, onMobNavButtonC
 
         <TransitionGroup component={null}>
         {mobNavShow && (
-          <CSSTransition classNames="togglemenu" timeout={600}>
+          <CSSTransition classNames="togglemenu" timeout={500}>
   			  <div className = "mobNav shadow-2 f4">
             {navMenu.map((item) => {
               if (item === pageIn) {

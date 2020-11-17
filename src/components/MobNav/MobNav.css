@@ -32,14 +32,12 @@
 .togglemenu-enter{
   opacity: 0.01;
   max-height: 0px;
-  margin-top: -50px;
 }
 
 .togglemenu-enter-active{
   opacity: 1;
   max-height: 200px;
-  transform: translateY(50px);
-  transition: all 600ms;
+  transition: all linear 500ms;
 }
 
 .togglemenu-exit {
@@ -50,6 +48,5 @@
 .togglemenu-exit-active {
   opacity: 0.01;
   max-height: 0px;
-  transform: translateY(-50px);
-  transition: all 600ms;
+  transition: all linear 500ms;
 }

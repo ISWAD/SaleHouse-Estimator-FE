@@ -5,13 +5,13 @@ import Frame from "./components/Frame/Frame.js";
 import Logo from './components/Logo/Logo.js';
 import Nav from './components/Nav/Nav.js';
 import MobNav from './components/MobNav/MobNav.js';
+import Welcome from './components/Welcome/Welcome.js';
 import Alert from './components/Alert/Alert.js';
 import Footer from './components/Footer/Footer.js';
 import Register from './constructors/Register/Register.js';
 import Login from './constructors/Login/Login.js';
 import Account from './constructors/Account/Account.js';
 import Estimator from './constructors/Estimator/Estimator.js';
-import bg from './statics/bg-img2.jpg';
 import './App.css';
 
 
@@ -24,11 +24,12 @@ const initialState = {
                       user_loggedIn: false, 
                       mobNavShow: false,
                       alertMsg: [],
-                      estimatorIsOpen: true,
+                      estimatorIsOpen: false,
                       registerIsOpen: false,
                       loginisOpen: false,
                       accountIsOpen: false,
-                      pageIn: "Estimator",
+                      isWelcomePgOpen: true,
+                      pageIn: "Welcome",
                       user: {
                         id: '',
                         name: '',
@@ -63,44 +64,52 @@ class App extends Component {
       this.onRegisterClose();
       this.onLoginClose();
       this.onAccountClose();
+      this.onWelcomeClose();
       setTimeout(() => this.setState({ 
         estimatorIsOpen: true,
         registerIsOpen: false,
         loginIsOpen: false,
         accountIsOpen: false,
+        isWelcomePgOpen: false,
         pageIn: 'Estimator' }), 
       1000);
     } else if (Route === 'Register') {
       this.onEstimatorClose();
       this.onLoginClose();
       this.onAccountClose();
+      this.onWelcomeClose();
       setTimeout(() => this.setState({ 
         estimatorIsOpen: false,
         registerIsOpen: true,
         loginIsOpen: false,
         accountIsOpen: false,
+        isWelcomePgOpen: false,
         pageIn: 'Register' }), 
       1000);
     } else if (Route === 'Login') {
       this.onEstimatorClose();
       this.onRegisterClose();
       this.onAccountClose();
+      this.onWelcomeClose();
       setTimeout(() => this.setState({ 
         estimatorIsOpen: false,
         registerIsOpen: false,
         loginIsOpen: true,
         accountIsOpen: false,
+        isWelcomePgOpen: false,
         pageIn: 'Login' }), 
       1000);
     } else if (Route === 'My Account') {
       this.onEstimatorClose();
       this.onRegisterClose();
       this.onLoginClose();
+      this.onWelcomeClose();
       setTimeout(() => this.setState({ 
         estimatorIsOpen: false,
         registerIsOpen: false,
         loginIsOpen: false,
         accountIsOpen: true,
+        isWelcomePgOpen: false,
         pageIn: 'My Account' }), 
       1000);
     }
@@ -109,7 +118,6 @@ class App extends Component {
   onNavClick = (event) => {
     let pageIn = event.target.innerHTML.trim();
     this.onRouteChange(pageIn);
-    document.getElementsByClassName("HeadPart")[0].style.height = "150px";
     this.setState({mobNavShow: false});
     if (pageIn === "Logout"){
       this.setState({user_loggedIn: false});
@@ -121,11 +129,17 @@ class App extends Component {
   onMobNavButtonClick = (event) => {
     if (this.state.mobNavShow){
       this.setState({mobNavShow: false});
-      setTimeout(function(){document.getElementsByClassName("HeadPart")[0].style.height = "150px"}, 300);
+      document.getElementsByClassName("HeadPart")[0].classList.remove("mobBotOpened");
+      document.getElementsByClassName("HeadPart")[0].classList.add("mobBotClosed");
     } else{
-      setTimeout(function(){document.getElementsByClassName("HeadPart")[0].style.height = "250px"}, 300);
+      document.getElementsByClassName("HeadPart")[0].classList.remove("mobBotClosed");
+      document.getElementsByClassName("HeadPart")[0].classList.add("mobBotOpened");
       this.setState({mobNavShow: true});
     }
+  }
+
+  onWlcomeBtnClick = (event) => {
+    this.onRouteChange("Estimator");
   }
 
   onLoadUser = (userId, userName, userCommentsNum) => {
@@ -146,11 +160,17 @@ class App extends Component {
     for (let i = 0; i < msgs.length; i++){
       curMsgs.push(msgs[i]);
     }
-    this.setState({alertMsg: curMsgs})
+    this.setState({alertMsg: curMsgs});
+    document.getElementsByClassName("AlertPlace")[0].classList.remove("AlertClosed");
+    document.getElementsByClassName("AlertPlace")[0].classList.add("AlertOpened");
   }
 
   removeAlert = () => {
-    this.setState({alertMsg: []});
+    if (this.state.alertMsg.length > 0) {
+      this.setState({alertMsg: []});
+      document.getElementsByClassName("AlertPlace")[0].classList.remove("AlertOpened");
+      document.getElementsByClassName("AlertPlace")[0].classList.add("AlertClosed");
+    }
   }
 
   onEstimatorClose = () => {
@@ -169,10 +189,13 @@ class App extends Component {
     this.setState({accountIsOpen: false});
   }
 
+  onWelcomeClose = () => {
+    this.setState({isWelcomePgOpen: false});
+  }
+
   render() {
     return(
       <div>
-      <img className = "bg" src = {bg}/>
       <div className = "container">
       <div className = "HeadPart">
         <Frame>
@@ -196,15 +219,28 @@ class App extends Component {
         </Frame>
       </div>
       <div className = "MainPart">
+      
       <TransitionGroup component={null}>
-        {this.state.alertMsg.length > 0 && (
+        {this.state.isWelcomePgOpen && (
           <CSSTransition classNames="dialog" timeout={1000}>
-            <Alert alertMsg = { this.state.alertMsg }/>
-          </CSSTransition>
+            <Welcome onWlcomeBtnClick = { this.onWlcomeBtnClick }/>
+            </CSSTransition>
         )}
       </TransitionGroup>
-      
 
+      <div className = "AlertPlace">
+      <TransitionGroup component={null}>
+        {this.state.alertMsg.length > 0 && (
+          this.state.alertMsg.map((msg, idx) => {
+            return(
+               <CSSTransition classNames="alertAnim" timeout={1000}>
+               <Alert alertMsg = { msg } key = { idx }/>
+               </CSSTransition>
+            )
+          })
+        )}
+      </TransitionGroup>
+      </div>
       <TransitionGroup component={null}>
         {this.state.estimatorIsOpen && (
           <CSSTransition classNames="dialog" timeout={1000}>
