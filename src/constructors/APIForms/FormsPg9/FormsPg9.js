@@ -61,7 +61,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtUnfSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onBsmtUnfSFChange }
 		          	/>
 				</div>
@@ -74,7 +74,7 @@ class FormsPg9 extends Component{
 		          		id = "GarageCars" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onGarageCarsChange }
 		          	/>
 				</div>
@@ -87,7 +87,7 @@ class FormsPg9 extends Component{
 		          		id = "BsmtFullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onBsmtFullBathChange }
 		          	/>
 				</div>
@@ -100,7 +100,7 @@ class FormsPg9 extends Component{
 		          		id = "YearBuilt" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onYearBuiltChange }
 		          	/>
 				</div>

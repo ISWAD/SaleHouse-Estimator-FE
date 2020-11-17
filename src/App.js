@@ -28,6 +28,7 @@ const initialState = {
                       registerIsOpen: false,
                       loginisOpen: false,
                       accountIsOpen: false,
+                      pageIn: "Estimator",
                       user: {
                         id: '',
                         name: '',
@@ -66,8 +67,9 @@ class App extends Component {
         estimatorIsOpen: true,
         registerIsOpen: false,
         loginIsOpen: false,
-        accountIsOpen: false }), 
-      300);
+        accountIsOpen: false,
+        pageIn: 'Estimator' }), 
+      1000);
     } else if (Route === 'Register') {
       this.onEstimatorClose();
       this.onLoginClose();
@@ -76,8 +78,9 @@ class App extends Component {
         estimatorIsOpen: false,
         registerIsOpen: true,
         loginIsOpen: false,
-        accountIsOpen: false }), 
-      300);
+        accountIsOpen: false,
+        pageIn: 'Register' }), 
+      1000);
     } else if (Route === 'Login') {
       this.onEstimatorClose();
       this.onRegisterClose();
@@ -86,8 +89,9 @@ class App extends Component {
         estimatorIsOpen: false,
         registerIsOpen: false,
         loginIsOpen: true,
-        accountIsOpen: false }), 
-      300);
+        accountIsOpen: false,
+        pageIn: 'Login' }), 
+      1000);
     } else if (Route === 'My Account') {
       this.onEstimatorClose();
       this.onRegisterClose();
@@ -96,8 +100,9 @@ class App extends Component {
         estimatorIsOpen: false,
         registerIsOpen: false,
         loginIsOpen: false,
-        accountIsOpen: true }), 
-      300);
+        accountIsOpen: true,
+        pageIn: 'My Account' }), 
+      1000);
     }
   }
 
@@ -116,9 +121,9 @@ class App extends Component {
   onMobNavButtonClick = (event) => {
     if (this.state.mobNavShow){
       this.setState({mobNavShow: false});
-      document.getElementsByClassName("HeadPart")[0].style.height = "150px";
+      setTimeout(function(){document.getElementsByClassName("HeadPart")[0].style.height = "150px"}, 300);
     } else{
-      document.getElementsByClassName("HeadPart")[0].style.height = "250px";
+      setTimeout(function(){document.getElementsByClassName("HeadPart")[0].style.height = "250px"}, 300);
       this.setState({mobNavShow: true});
     }
   }
@@ -174,13 +179,15 @@ class App extends Component {
           <Logo />
           {this.state.width >= 900 &&
             <Nav 
-              user_loggedIn = { this.state.user_loggedIn }  
+              user_loggedIn = { this.state.user_loggedIn }
+              pageIn = { this.state.pageIn }  
               onNavClick = { this.onNavClick }
             />
           }
           {this.state.width < 900 &&
             <MobNav 
-              user_loggedIn = { this.state.user_loggedIn } 
+              user_loggedIn = { this.state.user_loggedIn }
+              pageIn = { this.state.pageIn } 
               mobNavShow = { this.state.mobNavShow }
               onNavClick = { this.onNavClick } 
               onMobNavButtonClick = { this.onMobNavButtonClick }
@@ -191,7 +198,7 @@ class App extends Component {
       <div className = "MainPart">
       <TransitionGroup component={null}>
         {this.state.alertMsg.length > 0 && (
-          <CSSTransition classNames="dialog" timeout={200}>
+          <CSSTransition classNames="dialog" timeout={1000}>
             <Alert alertMsg = { this.state.alertMsg }/>
           </CSSTransition>
         )}
@@ -200,7 +207,7 @@ class App extends Component {
 
       <TransitionGroup component={null}>
         {this.state.estimatorIsOpen && (
-          <CSSTransition classNames="dialog" timeout={300}>
+          <CSSTransition classNames="dialog" timeout={1000}>
             <Estimator 
               alertMsgChanged = { this.alertMsgChanged }
               removeAlert = { this.removeAlert }
@@ -211,7 +218,7 @@ class App extends Component {
 
       <TransitionGroup component={null}>
         {this.state.registerIsOpen && (
-          <CSSTransition classNames="dialog" timeout={300}>
+          <CSSTransition classNames="dialog" timeout={1000}>
             <Register 
               onRouteChange = { this.onRouteChange } 
               alertMsgChanged = { this.alertMsgChanged } 
@@ -225,7 +232,7 @@ class App extends Component {
       
       <TransitionGroup component={null}>
         {this.state.loginIsOpen && (
-          <CSSTransition classNames="dialog" timeout={300}>
+          <CSSTransition classNames="dialog" timeout={1000}>
             <Login 
               onRouteChange = { this.onRouteChange }
               alertMsgChanged = { this.alertMsgChanged } 
@@ -239,7 +246,7 @@ class App extends Component {
   
       <TransitionGroup component={null}>
         {this.state.accountIsOpen && (
-          <CSSTransition classNames="dialog" timeout={300}>
+          <CSSTransition classNames="dialog" timeout={1000}>
             <Account 
               appServer = { appServer }
               userId = {this.state.user.id}

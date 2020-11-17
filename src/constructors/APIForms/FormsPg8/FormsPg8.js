@@ -61,7 +61,7 @@ class FormsPg8 extends Component{
 		          		id = "GrLivArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onGrLivAreaChange }
 		          	/>
 				</div>
@@ -74,7 +74,7 @@ class FormsPg8 extends Component{
 		          		id = "GarageArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onGarageAreaChange }
 		          	/>
 		         </div>
@@ -87,7 +87,7 @@ class FormsPg8 extends Component{
 		          		id = "EnclosedPorch" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onEnclosedPorchChange }
 		          	/>
 				</div>
@@ -100,7 +100,7 @@ class FormsPg8 extends Component{
 		          		id = "TotalBsmtSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onTotalBsmtSFChange }
 		          	/>
 				</div>

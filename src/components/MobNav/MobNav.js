@@ -1,4 +1,6 @@
 import React from 'react';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 import MobNavButton from '../MobNavButton/MobNavButton.js';
 import './MobNav.css'
 
@@ -15,7 +17,12 @@ const MobNav = ({ user_loggedIn, pageIn, mobNavShow, onNavClick, onMobNavButtonC
 	return(
 		<div className="navFrame">
   			<MobNavButton onMobNavButtonClick = { onMobNavButtonClick }/>
-        {mobNavShow &&
+
+
+
+        <TransitionGroup component={null}>
+        {mobNavShow && (
+          <CSSTransition classNames="togglemenu" timeout={600}>
   			  <div className = "mobNav shadow-2 f4">
             {navMenu.map((item) => {
               if (item === pageIn) {
@@ -27,7 +34,9 @@ const MobNav = ({ user_loggedIn, pageIn, mobNavShow, onNavClick, onMobNavButtonC
           }
         }) }
     		  </div>
-        }
+          </CSSTransition>
+        )}
+      </TransitionGroup>
 		</div>
 	)
 }

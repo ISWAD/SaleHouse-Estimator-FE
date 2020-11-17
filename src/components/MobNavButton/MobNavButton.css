@@ -1,13 +1,13 @@
 .ToggleDiv{
 	width: 50px;
-	background-color: #743b3b85;
+	background-color: #504b4b85;
 	display: block;
 	padding: 2px;
 	margin: 5px;
 	border: solid 1px;
 	border-radius: 10%;
 	margin-left: 45px;
-	border-color: #743b3b85;
+	border-color: #504b4b85;
 	cursor: pointer;
 }
 

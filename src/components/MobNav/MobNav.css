@@ -12,6 +12,7 @@
 	margin: auto;
 	padding-top: 10px;
 	padding-bottom: 5px;
+	overflow: hidden;
 }
 
 .mobNavList{
@@ -28,3 +29,27 @@
 	transform: scale(1.1);
 }
 
+.togglemenu-enter{
+  opacity: 0.01;
+  max-height: 0px;
+  margin-top: -50px;
+}
+
+.togglemenu-enter-active{
+  opacity: 1;
+  max-height: 200px;
+  transform: translateY(50px);
+  transition: all 600ms;
+}
+
+.togglemenu-exit {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.togglemenu-exit-active {
+  opacity: 0.01;
+  max-height: 0px;
+  transform: translateY(-50px);
+  transition: all 600ms;
+}

@@ -61,7 +61,7 @@ class FormsPg10 extends Component{
 		          		id = "MasVnrArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onMasVnrAreaChange }
 		          	/>
 				</div>
@@ -74,7 +74,7 @@ class FormsPg10 extends Component{
           				id = "GarageYrBlt" 
           				className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
           				style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-          				placeholder="Just enter a valid number, like 12.34"
+          				placeholder="Enter a number"
           				onChange = { this.onGarageYrBltChange }
           			/>
 				</div>
@@ -87,7 +87,7 @@ class FormsPg10 extends Component{
 		          		id = "LotArea" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onLotAreaChange }
 		          	/>
 				</div>
@@ -100,7 +100,7 @@ class FormsPg10 extends Component{
 		          		id = "HalfBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onHalfBathChange }
 		          	/>
 				</div>

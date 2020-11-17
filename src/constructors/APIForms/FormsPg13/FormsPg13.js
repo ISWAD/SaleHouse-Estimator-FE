@@ -63,7 +63,7 @@ class FormsPg13 extends Component{
 		          		id = "WoodDeckSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onWoodDeckSFChange }
 		          	/>
 				</div>
@@ -76,7 +76,7 @@ class FormsPg13 extends Component{
 		          		id = "FullBath" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onFullBathChange }
 		          	/>
 				</div>
@@ -89,7 +89,7 @@ class FormsPg13 extends Component{
 		          		id = "TotRmsAbvGrd" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onTotRmsAbvGrdChange }
 		          	/>
 				</div>
@@ -102,7 +102,7 @@ class FormsPg13 extends Component{
 		          		id = "2ndFlrSF" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.on2ndFlrSFChange }
 		          	/>
 				</div>

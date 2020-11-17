@@ -61,7 +61,7 @@ class FormsPg11 extends Component{
 		          		id = "Fireplaces" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onFireplacesChange }
 		          	/>
 				</div>
@@ -74,7 +74,7 @@ class FormsPg11 extends Component{
 		          		id = "LotFrontage" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onLotFrontageChange }
 		          	/>
 				</div>
@@ -87,7 +87,7 @@ class FormsPg11 extends Component{
 		          		id = "BsmtFinSF1" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onBsmtFinSF1Change }
 		          	/>
 				</div>
@@ -100,7 +100,7 @@ class FormsPg11 extends Component{
 		          		id = "YearRemodAdd" 
 		          		className="pa2 input-reset ba bg-transparent hover-bg-purple hover-white w-100 shadow-2"
 		          		style = {{ border: "solid 1px", borderRadius: "5px", borderColor: "white", color: "white", margin: "10px auto"}}
-		          		placeholder="Just enter a valid number, like 12.34"
+		          		placeholder="Enter a number"
 		          		onChange = { this.onYearRemodAddChange }
 		          	/>
 				</div>
