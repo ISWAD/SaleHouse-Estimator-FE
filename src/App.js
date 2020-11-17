@@ -117,6 +117,7 @@ class App extends Component {
 
   onNavClick = (event) => {
     let pageIn = event.target.innerHTML.trim();
+    document.getElementsByClassName("HeadPart")[0].style = "150px";
     this.onRouteChange(pageIn);
     this.setState({mobNavShow: false});
     if (pageIn === "Logout"){
@@ -136,6 +137,14 @@ class App extends Component {
       document.getElementsByClassName("HeadPart")[0].classList.add("mobBotOpened");
       this.setState({mobNavShow: true});
     }
+  }
+
+  onBodyClick = (event) => {
+    if (this.state.mobNavShow) {
+      this.setState({mobNavShow: false});
+      document.getElementsByClassName("HeadPart")[0].classList.remove("mobBotOpened");
+      document.getElementsByClassName("HeadPart")[0].classList.add("mobBotClosed");
+    } 
   }
 
   onWlcomeBtnClick = (event) => {
@@ -195,7 +204,7 @@ class App extends Component {
 
   render() {
     return(
-      <div>
+      <div onClick = { this.onBodyClick }>
       <div className = "container">
       <div className = "HeadPart">
         <Frame>
