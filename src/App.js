@@ -216,26 +216,32 @@ class App extends Component {
   }
 
   SmoothVerticalScrolling = () => {
-    let time = 500;
-    let where = "top";
-    let numMsgs = this.state.alertMsg.length;
-    let eTop = document.getElementsByClassName("AlertPlace")[0].getBoundingClientRect().top - numMsgs * 100;
-    // let eTop = document.body.getBoundingClientRect().top;
-    let eAmt = eTop / 100;
-    let curTime = 0;
-    console.log(eTop);
-    while (curTime <= time) {
-        window.setTimeout(this.SVS_B, curTime, eAmt, where);
-        curTime += time / 100;
-    }
+    this.scrollTo(document.body, 0, 1250);
+    this.scrollTo(document.documentElement, 0, 1250);
   }
 
-  SVS_B = (eAmt, where) => {
-    if(where === "center" || where === "")
-        window.scrollBy(0, eAmt / 2);
-    if (where === "top")
-        window.scrollBy(0, eAmt);
+  scrollTo = (element, to, duration) => {
+    let start = element.scrollTop;
+    let change = to - start;
+    let currentTime = 0;
+    let increment = 20;     
+    let animateScroll = () => {        
+        currentTime += increment;
+        let val = this.easeInOutQuad(currentTime, start, change, duration);
+        element.scrollTop = val;
+        if(currentTime < duration) {
+            setTimeout(animateScroll, increment);
+        }
+    };
+    animateScroll();
   }
+
+  easeInOutQuad = (t, b, c, d) => {
+    t /= d/2;
+    if (t < 1) return c/2*t*t + b;
+    t--;
+    return -c/2 * (t*(t-2) - 1) + b;
+  };
 
   render() {
     return(
