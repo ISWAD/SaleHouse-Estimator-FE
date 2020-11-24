@@ -73,8 +73,9 @@ class Register extends Component {
     let validMail = true;
     this.props.removeAlert();
     let thenThis = this;
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    this.props.SmoothVerticalScrolling();
+    // document.body.scrollTop = 0;
+    // document.documentElement.scrollTop = 0;
     this.setState({isLoading: true});
     document.getElementsByClassName("Wait")[0].style.height = "100px";
     newMsg.push("Please wait while your information is being processed!");

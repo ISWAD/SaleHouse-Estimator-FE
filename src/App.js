@@ -215,6 +215,28 @@ class App extends Component {
     this.setState({isWelcomePgOpen: false});
   }
 
+  SmoothVerticalScrolling = () => {
+    let time = 500;
+    let where = "top";
+    let numMsgs = this.state.alertMsg.length;
+    let eTop = document.getElementsByClassName("AlertPlace")[0].getBoundingClientRect().top - numMsgs * 100;
+    // let eTop = document.body.getBoundingClientRect().top;
+    let eAmt = eTop / 100;
+    let curTime = 0;
+    console.log(eTop);
+    while (curTime <= time) {
+        window.setTimeout(this.SVS_B, curTime, eAmt, where);
+        curTime += time / 100;
+    }
+  }
+
+  SVS_B = (eAmt, where) => {
+    if(where === "center" || where === "")
+        window.scrollBy(0, eAmt / 2);
+    if (where === "top")
+        window.scrollBy(0, eAmt);
+  }
+
   render() {
     return(
       <div onClick = { this.onBodyClick }>
@@ -269,6 +291,7 @@ class App extends Component {
             <Estimator 
               alertMsgChanged = { this.alertMsgChanged }
               removeAlert = { this.removeAlert }
+              SmoothVerticalScrolling = { this.SmoothVerticalScrolling }
             />
           </CSSTransition>
         )}
@@ -283,6 +306,7 @@ class App extends Component {
               removeAlert = { this.removeAlert }
               onLoadUser = { this.onLoadUser}
               appServer = { appServer }
+              SmoothVerticalScrolling = { this.SmoothVerticalScrolling }
             />
           </CSSTransition>
         )}
@@ -297,6 +321,7 @@ class App extends Component {
               removeAlert = { this.removeAlert }
               onLoadUser = { this.onLoadUser}
               appServer = { appServer }
+              SmoothVerticalScrolling = { this.SmoothVerticalScrolling }
             />
           </CSSTransition>
         )}
@@ -312,6 +337,7 @@ class App extends Component {
               userCommentsNum = {this.state.user.commentsNum}
               removeAlert = { this.removeAlert }
               alertMsgChanged = { this.alertMsgChanged }
+              SmoothVerticalScrolling = { this.SmoothVerticalScrolling }
             />
           </CSSTransition>
         )}

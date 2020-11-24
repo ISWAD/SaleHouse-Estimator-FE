@@ -33,8 +33,8 @@ const initialState = {
 
 class Estimator extends Component {
   
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = initialState;
   }
 
@@ -122,9 +122,9 @@ class Estimator extends Component {
     this.props.removeAlert();
     let thenThis = this
     let newMsg = [];
+    this.props.SmoothVerticalScrolling();
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
-    this.SmoothVerticalScrolling(500, "top");
     document.getElementsByClassName("Wait")[0].style.height = "100px";
     this.setState({isLoading: true});
     newMsg.push("Please wait while the data is being processed!");
@@ -163,23 +163,6 @@ class Estimator extends Component {
       this.props.alertMsgChanged(newMsg);
     }
   }
-
-  SmoothVerticalScrolling = (time, where) => {
-    let eTop = document.body.getBoundingClientRect().top;
-    let eAmt = eTop / 100;
-    let curTime = 0;
-    while (curTime <= time) {
-        window.setTimeout(this.SVS_B, curTime, eAmt, where);
-        curTime += time / 100;
-    }
-  }
-
-  SVS_B = (eAmt, where) => {
-    if(where == "center" || where == "")
-        window.scrollBy(0, eAmt / 2);
-    if (where == "top")
-        window.scrollBy(0, eAmt);
-    }
 
   render() {
     
