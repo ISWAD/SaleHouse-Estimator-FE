@@ -124,9 +124,9 @@ class Estimator extends Component {
     let newMsg = [];
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
-    this.scrollToTop();
-    this.setState({isLoading: true});
+    this.SmoothVerticalScrolling(500, "top");
     document.getElementsByClassName("Wait")[0].style.height = "100px";
+    this.setState({isLoading: true});
     newMsg.push("Please wait while the data is being processed!");
     this.props.alertMsgChanged(newMsg);
     if (this.state.Cement !== "" && this.state.Water !== "" && this.state.Slag !== "" && this.state.FlyAsh !== "" &&
@@ -164,12 +164,22 @@ class Estimator extends Component {
     }
   }
 
-  scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  SmoothVerticalScrolling = (time, where) => {
+    let eTop = document.body.getBoundingClientRect().top;
+    let eAmt = eTop / 100;
+    let curTime = 0;
+    while (curTime <= time) {
+        window.setTimeout(this.SVS_B, curTime, eAmt, where);
+        curTime += time / 100;
+    }
   }
+
+  SVS_B = (eAmt, where) => {
+    if(where == "center" || where == "")
+        window.scrollBy(0, eAmt / 2);
+    if (where == "top")
+        window.scrollBy(0, eAmt);
+    }
 
   render() {
     
