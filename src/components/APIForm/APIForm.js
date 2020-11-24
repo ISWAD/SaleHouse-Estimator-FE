@@ -109,7 +109,7 @@ const APIForm = ({ onCementChange, onSlagChange, onFlyAshChange, onWaterChange, 
 			<input
 				className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple SubmitBtn"
 				type="submit"
-				value="Register"
+				value="Submit"
 				style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
 				onClick = { onSubmitBtnClick }
 			/>

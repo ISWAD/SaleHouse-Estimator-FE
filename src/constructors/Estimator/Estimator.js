@@ -122,8 +122,9 @@ class Estimator extends Component {
     this.props.removeAlert();
     let thenThis = this
     let newMsg = [];
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    // document.body.scrollTop = 0;
+    // document.documentElement.scrollTop = 0;
+    this.scrollToTop();
     this.setState({isLoading: true});
     document.getElementsByClassName("Wait")[0].style.height = "100px";
     newMsg.push("Please wait while the data is being processed!");
@@ -161,6 +162,13 @@ class Estimator extends Component {
       newMsg.push("Please fill all the required fields.");
       this.props.alertMsgChanged(newMsg);
     }
+  }
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   render() {
