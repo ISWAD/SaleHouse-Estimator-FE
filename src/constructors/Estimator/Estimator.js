@@ -1,74 +1,34 @@
 import React, {Component} from 'react';
-import Fade from 'react-reveal/Fade';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import FormsPg1 from '../APIForms/FormsPg1/FormsPg1.js';
-import FormsPg2 from '../APIForms/FormsPg2/FormsPg2.js';
-import FormsPg3 from '../APIForms/FormsPg3/FormsPg3.js';
-import FormsPg4 from '../APIForms/FormsPg4/FormsPg4.js';
-import FormsPg5 from '../APIForms/FormsPg5/FormsPg5.js';
-import FormsPg6 from '../APIForms/FormsPg6/FormsPg6.js';
-import FormsPg7 from '../APIForms/FormsPg7/FormsPg7.js';
-import FormsPg8 from '../APIForms/FormsPg8/FormsPg8.js';
-import FormsPg9 from '../APIForms/FormsPg9/FormsPg9.js';
-import FormsPg10 from '../APIForms/FormsPg10/FormsPg10.js';
-import FormsPg11 from '../APIForms/FormsPg11/FormsPg11.js';
-import FormsPg12 from '../APIForms/FormsPg12/FormsPg12.js';
-import FormsPg13 from '../APIForms/FormsPg13/FormsPg13.js';
-
+import APIForm from '../../components/APIForm/APIForm.js';
 import './Estimator.css';
 
+// const APIURL = `http://127.0.0.1:5000/`;
+const APIURL = `https://concrete-estimator-api.herokuapp.com/`;
+
+const re = /^(\d+)?(\.)?(\d+)?$/;
+const re2 = /^[.]?(\d+)?$/;
+
+let Cement = "";
+let Slag = "";
+let FlyAsh = "";
+let Water = "";
+let Superplasticizer = "";
+let CA = "";
+let FA = "";
+let Age = "";
+
 const initialState = {
-                      LotShape: '4',
-                      GrLivArea: '',
-                      GarageArea: '',
-                      EnclosedPorch: '',
-                      TotalBsmtSF: '',
-                      BsmtUnfSF: '',
-                      SaleType: '',
-                      BsmtExposure: '',
-                      Neighborhood: '',
-                      FireplaceQu: '',
-                      PavedDrive: '',
-                      SaleCondition: '',
-                      GarageCars: '',
-                      Exterior2nd: '',
-                      BsmtFullBath: '',
-                      YearBuilt: '',
-                      Electrical: '',
-                      OverallQual: '',
-                      MasVnrType: '',
-                      ExterQual: '',
-                      MasVnrArea: '',
-                      BsmtCond: '',
-                      GarageYrBlt: '',
-                      LotArea: '',
-                      HalfBath: '',
-                      Fireplaces: '',
-                      Condition1: '',
-                      LotFrontage: '',
-                      BsmtFinSF1: '',
-                      HeatingQC: '',
-                      YearRemodAdd: '',
-                      OpenPorchSF: '',
-                      BedroomAbvGr: '',
-                      GarageType: '',
-                      BsmtFinType1: '',
-                      OverallCond: '',
-                      BsmtQual: '',
-                      KitchenQual: '',
-                      CentralAir: '',
-                      Foundation: '',
-                      KitchenAbvGr: '',
-                      Functional: '',
-                      ScreenPorch: '',
-                      HouseStyle: '',
-                      WoodDeckSF: '',
-                      MSZoning: '',
-                      Exterior1st: '',
-                      GarageFinish: '',
-                      FullBath: '',
-                      TotRmsAbvGrd: '',
-                      SecondFlrSF: ''
+                      Cement: '',
+                      Slag: '',
+                      FlyAsh: '',
+                      Water: '',
+                      Superplasticizer: '',
+                      CA: '',
+                      FA: '',
+                      Age: '',
+                      isLoading: false
                      }
 
 class Estimator extends Component {
@@ -78,351 +38,158 @@ class Estimator extends Component {
     this.state = initialState;
   }
 
-  setLotShapeVal = (val) => {
-    this.setState({LotShape: val});
+  onCementChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      Cement = event.target.value;
+      this.setState({Cement: event.target.value});
+    } else {
+      document.getElementById("Cement").value = Cement;
+    }
   }
 
-  setSaleTypeVal = (val) => {
-    this.setState({SaleType: val});
+  onSlagChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      Slag = event.target.value;
+      this.setState({Slag: event.target.value});
+    } else {
+      document.getElementById("Slag").value = Slag;
+    }
   }
 
-  setBsmtExposureVal = (val) => {
-    this.setState({BsmtExposure: val});
+  onFlyAshChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      FlyAsh = event.target.value;
+      this.setState({FlyAsh: event.target.value});
+    } else {
+      document.getElementById("FlyAsh").value = FlyAsh;
+    }
   }
 
-  setNeighborhoodVal = (val) => {
-    this.setState({Neighborhood: val});
+  onWaterChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      Water = event.target.value;
+      this.setState({Water: event.target.value});
+    } else {
+      document.getElementById("Water").value = Water;
+    }
   }
 
-
-
-  setFireplaceQuVal = (val) => {
-    this.setState({FireplaceQu: val});
+  onSuperplasticizerChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      Superplasticizer = event.target.value;
+      this.setState({Superplasticizer: event.target.value});
+    } else {
+      document.getElementById("Superplasticizer").value = Superplasticizer;
+    }
   }
 
-  setPavedDriveVal = (val) => {
-    this.setState({PavedDrive: val});
+  onCAChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      CA = event.target.value;
+      this.setState({CA: event.target.value});
+    } else {
+      document.getElementById("CA").value = CA;
+    }
   }
 
-  setSaleConditionVal = (val) => {
-    this.setState({SaleCondition: val});
+  onFAChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      FA = event.target.value;
+      this.setState({FA: event.target.value});
+    } else {
+      document.getElementById("FA").value = FA;
+    }
   }
 
-  setExterior2ndVal = (val) => {
-    this.setState({Exterior2nd: val});
+  onAgeChange = (event) => {
+    if (re.test(event.target.value) || re2.test(event.target.value)) {
+      this.props.removeAlert();
+      Age = event.target.value;
+      this.setState({Age: event.target.value});
+    } else {
+      document.getElementById("Age").value = Age;
+    }
   }
 
-
-  setElectricalVal = (val) => {
-    this.setState({Electrical: val});
-  }
-
-  setOverallQualVal = (val) => {
-    this.setState({OverallQual: val});
-  }
-
-  setMasVnrTypeVal = (val) => {
-    this.setState({MasVnrType: val});
-  }
-
-  setExterQualVal = (val) => {
-    this.setState({ExterQual: val});
-  }
-
-
-  setBsmtCondVal = (val) => {
-    this.setState({BsmtCond: val});
-  }
-
-  setCondition1Val = (val) => {
-    this.setState({Condition1: val});
-  }
-
-  setHeatingQCVal = (val) => {
-    this.setState({HeatingQC: val});
-  }
-
-  setGarageTypeVal = (val) => {
-    this.setState({GarageType: val});
-  }
-
-
-  setBsmtFinType1Val = (val) => {
-    this.setState({BsmtFinType1: val});
-  }
-
-  setOverallCondVal = (val) => {
-    this.setState({OverallCond: val});
-  }
-
-  setBsmtQualVal = (val) => {
-    this.setState({BsmtQual: val});
-  }
-
-  setKitchenQualVal = (val) => {
-    this.setState({KitchenQual: val});
-  }
-
-
-  setCentralAirVal = (val) => {
-    this.setState({CentralAir: val});
-  }
-
-  setFoundationVal = (val) => {
-    this.setState({Foundation: val});
-  }
-
-  setFunctionalVal = (val) => {
-    this.setState({Functional: val});
-  }
-
-  setHouseStyleVal = (val) => {
-    this.setState({HouseStyle: val});
-  }
-
-
-  setMSZoningVal = (val) => {
-    this.setState({MSZoning: val});
-  }
-
-  setExterior1stVal = (val) => {
-    this.setState({Exterior1st: val});
-  }
-
-  setGarageFinishVal = (val) => {
-    this.setState({GarageFinish: val});
-  }
-
-
-  setGrLivAreaVal = (val) => {
-    this.setState({GrLivArea: val});
-  }
-
-  setGarageAreaVal = (val) => {
-    this.setState({GarageArea: val});
-  }
-
-  setEnclosedPorchVal = (val) => {
-    this.setState({EnclosedPorch: val});
-  }
-
-  setTotalBsmtSFVal = (val) => {
-    this.setState({TotalBsmtSF: val});
-  }
-
-
-  setBsmtUnfSFVal = (val) => {
-    this.setState({BsmtUnfSF: val});
-  }
-
-  setGarageCarsVal = (val) => {
-    this.setState({GarageCars: val});
-  }
-
-  setBsmtFullBathVal = (val) => {
-    this.setState({BsmtFullBath: val});
-  }
-
-  setYearBuiltVal = (val) => {
-    this.setState({YearBuilt: val});
-  }
-
-
-  setMasVnrAreaVal = (val) => {
-    this.setState({MasVnrArea: val});
-  }
-
-  setGarageYrBltVal = (val) => {
-    this.setState({GarageYrBlt: val});
-  }
-
-  setLotAreaVal = (val) => {
-    this.setState({LotArea: val});
-  }
-
-  setHalfBathVal = (val) => {
-    this.setState({HalfBath: val});
-  }
-
-
-  setFireplacesVal = (val) => {
-    this.setState({Fireplaces: val});
-  }
-
-  setLotFrontageVal = (val) => {
-    this.setState({LotFrontage: val});
-  }
-
-  setBsmtFinSF1Val = (val) => {
-    this.setState({BsmtFinSF1: val});
-  }
-
-  setYearRemodAddVal = (val) => {
-    this.setState({YearRemodAdd: val});
-  }
-
-
-  setOpenPorchSFVal = (val) => {
-    this.setState({OpenPorchSF: val});
-  }
-
-  setBedroomAbvGrVal = (val) => {
-    this.setState({BedroomAbvGr: val});
-  }
-
-  setKitchenAbvGrVal = (val) => {
-    this.setState({KitchenAbvGr: val});
-  }
-
-  setScreenPorchVal = (val) => {
-    this.setState({ScreenPorch: val});
-  }
-
-
-  setWoodDeckSFVal = (val) => {
-    this.setState({WoodDeckSF: val});
-  }
-
-  setFullBathVal = (val) => {
-    this.setState({FullBath: val});
-  }
-
-  setTotRmsAbvGrdVal = (val) => {
-    this.setState({TotRmsAbvGrd: val});
-  }
-
-  set2ndFlrSFVal = (val) => {
-    this.setState({SecondFlrSF: val});
+  onSubmitBtnClick = (event) => {
+    this.props.removeAlert();
+    let thenThis = this
+    let newMsg = [];
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    this.setState({isLoading: true});
+    document.getElementsByClassName("Wait")[0].style.height = "100px";
+    newMsg.push("Please wait while the data is being processed!");
+    this.props.alertMsgChanged(newMsg);
+    if (this.state.Cement !== "" && this.state.Water !== "" && this.state.Slag !== "" && this.state.FlyAsh !== "" &&
+        this.state.Superplasticizer !== "" && this.state.CA !== "" && this.state.FA !== "" && this.state.Age !== "") {
+      let WC = this.state.Water / this.state.Cement;
+      let api_vec = [this.state.Slag, this.state.FlyAsh, this.state.Superplasticizer, this.state.CA, this.state.FA, this.state.Age, WC];
+      fetch(APIURL, {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          ApiVec: api_vec
+        })
+      })
+      .then(response => response.json())
+      .then(function(response) {
+        newMsg = [];
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
+        newMsg.push(`The compressive strength of concrete is estimated to be <span class = 'APIRes'>${response['result']}</span> MPa!`);
+        thenThis.props.alertMsgChanged(newMsg);
+      })
+      .catch(err => {
+        newMsg = [];
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
+        newMsg.push("Something is wrong, please try again!");
+        thenThis.props.alertMsgChanged(newMsg);
+      })
+    } else {
+      newMsg = [];
+      this.setState({isLoading: false});
+      document.getElementsByClassName("Wait")[0].style.height = "0px";
+      newMsg.push("Please fill all the required fields.");
+      this.props.alertMsgChanged(newMsg);
+    }
   }
 
   render() {
     
     return(
       <div className = "Forms dialog">
-            <Fade left>
-            <FormsPg1
-              setLotShapeVal = { this.setLotShapeVal }
-              setSaleTypeVal = { this.setSaleTypeVal }
-              setBsmtExposureVal = { this.setBsmtExposureVal }
-              setNeighborhoodVal = { this.setNeighborhoodVal }
-            />
-            </Fade>
+        <div className = "Wait">
+          <TransitionGroup component={null}>
+            {this.state.isLoading && (
+              <CSSTransition classNames="LoadingAnim" timeout={500}>
+                <div className = "isLoad" style = {{backgroundColor: "transparent", color: "white", borderColor: "white"}}>
+                  Wait!
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </div>
 
-            <Fade left>
-            <FormsPg2
-              setFireplaceQuVal = { this.setFireplaceQuVal }
-              setPavedDriveVal = { this.setPavedDriveVal }
-              setSaleConditionVal = { this.setSaleConditionVal }
-              setExterior2ndVal = { this.setExterior2ndVal }
-           />
-           </Fade>
-
-            <Fade left>
-            <FormsPg3 
-              setElectricalVal = { this.setFireplaceQuVal }
-              setOverallQualVal = { this.setPavedDriveVal }
-              setMasVnrTypeVal = { this.setSaleConditionVal }
-              setExterQualVal = { this.setExterior2ndVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg4
-              setBsmtCondVal = { this.setBsmtCondVal }
-              setCondition1Val = { this.setCondition1Val }
-              setHeatingQCVal = { this.setHeatingQCVal }
-              setGarageTypeVal = { this.setGarageTypeVal } 
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg5 
-              setBsmtFinType1Val = { this.setBsmtFinType1Val }
-              setOverallCondVal = { this.setOverallCondVal }
-              setBsmtQualVal = { this.setBsmtQualVal }
-              setKitchenQualVal = { this.setKitchenQualVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg6 
-              setCentralAirVal = { this.setCentralAirVal }
-              setFoundationVal = { this.setFoundationVal }
-              setFunctionalVal = { this.setFunctionalVal }
-              setHouseStyleVal = { this.setHouseStyleVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg7 
-              setMSZoningVal = { this.setMSZoningVal }
-              setExterior1stVal = { this.setExterior1stVal }
-              setGarageFinishVal = { this.setGarageFinishVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg8
-              setGrLivAreaVal = { this.setGrLivAreaVal }
-              setGarageAreaVal = { this.setGarageAreaVal }
-              setEnclosedPorchVal = { this.setEnclosedPorchVal }
-              setTotalBsmtSFVal = { this.setTotalBsmtSFVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg9
-              setBsmtUnfSFVal = { this.setBsmtUnfSFVal }
-              setGarageCarsVal = { this.setGarageCarsVal }
-              setBsmtFullBathVal = { this.setBsmtFullBathVal }
-              setYearBuiltVal = { this.setYearBuiltVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg10
-              setMasVnrAreaVal = { this.setMasVnrAreaVal }
-              setGarageYrBltVal = { this.setGarageYrBltVal }
-              setLotAreaVal = { this.setLotAreaVal }
-              setHalfBathVal = { this.setHalfBathVal } 
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg11
-              setFireplacesVal = { this.setFireplacesVal }
-              setLotFrontageVal = { this.setLotFrontageVal }
-              setBsmtFinSF1Val = { this.setBsmtFinSF1Val }
-              setYearRemodAddVal = { this.setYearRemodAddVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg12
-              setOpenPorchSFVal = { this.setOpenPorchSFVal }
-              setBedroomAbvGrVal = { this.setBedroomAbvGrVal }
-              setKitchenAbvGrVal = { this.setKitchenAbvGrVal }
-              setScreenPorchVal = { this.setScreenPorchVal }
-            />
-            </Fade>
-
-            <Fade left>
-            <FormsPg13
-              setWoodDeckSFVal = { this.setWoodDeckSFVal }
-              setFullBathVal = { this.setFullBathVal }
-              setTotRmsAbvGrdVal = { this.setTotRmsAbvGrdVal }
-              set2ndFlrSFVal = { this.set2ndFlrSFVal } 
-            />
-            </Fade>
-
-            <Fade left>
-            <input
-              className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib btnScale shadow-2 hover-bg-purple SubmitBtn"
-              type="submit"
-              value="Submit"
-              style = {{ color: "white", borderColor: "white", borderRadius: "10px", border: "solid 1px" }}
-            />
-            </Fade>
+        <APIForm
+          onCementChange = { this.onCementChange }
+          onSlagChange = { this.onSlagChange }
+          onFlyAshChange = { this.onFlyAshChange }
+          onWaterChange = { this.onWaterChange }
+          onSuperplasticizerChange = { this.onSuperplasticizerChange }
+          onCAChange = { this.onCAChange }
+          onFAChange = { this.onFAChange }
+          onAgeChange = { this.onAgeChange }
+          onSubmitBtnClick = { this.onSubmitBtnClick }
+        />
       </div>
     )
 

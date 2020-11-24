@@ -3,14 +3,16 @@
 	padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 body {
   width: 100%;
   font-family: "Times", Times New Roman, serif;
   overflow-x: hidden;
-  /*font-family: "Verdana", Geneva, sans-serif;*/
-  /*font-family: "Tahoma", Geneva, sans-serif;*/
-  /*font-family: "Courier New", Courier, monospace;*/
-  /*background: linear-gradient(89deg, #e21651cf 0%, #6b325cd9 100%); /* w3c */
+  letter-spacing: 0.1em;
 }
 
 button {

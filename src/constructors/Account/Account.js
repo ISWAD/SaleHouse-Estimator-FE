@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 
 class Account extends Component {
@@ -7,7 +8,8 @@ class Account extends Component {
     super(props);
     this.state = {
       userCommentsNum: this.props.userCommentsNum,
-      userComment: ''
+      userComment: '',
+      isLoading: false
     };
     this.commentServer = `${this.props.appServer}/comment`;
   }
@@ -20,6 +22,13 @@ class Account extends Component {
   onSubmitCommentClick = () => {
     let newMsg = [];
     let thenThis = this;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    this.setState({isLoading: true});
+    document.getElementsByClassName("Wait")[0].style.height = "100px";
+    newMsg.push("Please wait while your comment is being sent!");
+    this.props.alertMsgChanged(newMsg);
+    newMsg = [];
     if (this.state.userComment !== '') {
       fetch(this.commentServer, {
         method: 'post',
@@ -31,13 +40,21 @@ class Account extends Component {
       })
       .then(response => response.json())
       .then(function(response) {
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
+        newMsg.push("Thank you, your comment was successfully sent!");
+        thenThis.props.alertMsgChanged(newMsg);
         thenThis.setState({userCommentsNum: response});
       })
       .catch(err => {
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
         newMsg.push("Something is wrong, please try again!");
         thenThis.props.alertMsgChanged(newMsg);
       })
     } else {
+      thenThis.setState({isLoading: false});
+      document.getElementsByClassName("Wait")[0].style.height = "0px";
       newMsg.push("Please fill all the required fields.");
       this.props.alertMsgChanged(newMsg);
     }
@@ -47,6 +64,19 @@ class Account extends Component {
     
     return(
       <div className = "dialog FormContainer">
+        
+        <div className = "Wait">
+          <TransitionGroup component={null}>
+            {this.state.isLoading && (
+              <CSSTransition classNames="LoadingAnim" timeout={500}>
+                <div className = "isLoad" style = {{backgroundColor: "transparent", color: "white", borderColor: "white"}}>
+                  Wait!
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </div>
+
         <h1 className = "f5 shadow-2 Alert pa3" style = {{width: "90%"}}>
         Hi {this.props.userName}, you have shared {this.state.userCommentsNum} comments with us; please let us know more about your experience with our app.
         </h1>

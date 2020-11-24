@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 import './Register.css';
 
 const initialState = {
   firstName: '',
   lastName: '',
   email: '',
-  password: ''
+  password: '',
+  isLoading: false
 };
 
 let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,6 +73,13 @@ class Register extends Component {
     let validMail = true;
     this.props.removeAlert();
     let thenThis = this;
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    this.setState({isLoading: true});
+    document.getElementsByClassName("Wait")[0].style.height = "100px";
+    newMsg.push("Please wait while your information is being processed!");
+    this.props.alertMsgChanged(newMsg);
+    newMsg = [];
     if (! re.test(this.state.email)) {
       validMail = false;
       newMsg.push("Please enter a valid email address.");
@@ -87,6 +97,8 @@ class Register extends Component {
       })
       .then(response => response.json())
       .then(function(response) {
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
         if (response.id) {
           thenThis.props.onLoadUser(response.id, response.firstname, response.commentsnum);
           thenThis.props.onRouteChange('My Account');
@@ -96,10 +108,14 @@ class Register extends Component {
         }
       })
       .catch(err => {
+        thenThis.setState({isLoading: false});
+        document.getElementsByClassName("Wait")[0].style.height = "0px";
         newMsg.push("Something is wrong, please try again!");
         thenThis.props.alertMsgChanged(newMsg);
       })
     } else {
+      thenThis.setState({isLoading: false});
+      document.getElementsByClassName("Wait")[0].style.height = "0px";
       newMsg.push("Please fill all the required fields.");
       this.props.alertMsgChanged(newMsg);
     }
@@ -110,6 +126,19 @@ class Register extends Component {
     return(
       <div className = "dialog">
         <div className = "FormContainer">
+
+        <div className = "Wait">
+          <TransitionGroup component={null}>
+            {this.state.isLoading && (
+              <CSSTransition classNames="LoadingAnim" timeout={500}>
+                <div className = "isLoad" style = {{backgroundColor: "transparent", color: "white", borderColor: "white"}}>
+                  Wait!
+                </div>
+              </CSSTransition>
+            )}
+          </TransitionGroup>
+        </div>
+
         <div className = "InputContainer">
         <label className = "db fw6 lh-copy f5" htmlFor = "firstname"> First Name </label>
         <input 

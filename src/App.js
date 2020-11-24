@@ -60,6 +60,7 @@ class App extends Component {
   }
 
   onRouteChange = (Route) => {
+    this.removeAlert();
     if (Route === 'Estimator') {
       this.onRegisterClose();
       this.onLoginClose();
@@ -183,15 +184,14 @@ class App extends Component {
       curMsgs.push(msgs[i]);
     }
     this.setState({alertMsg: curMsgs});
-    document.getElementsByClassName("AlertPlace")[0].classList.remove("AlertClosed");
-    document.getElementsByClassName("AlertPlace")[0].classList.add("AlertOpened");
+    let alertHeight = curMsgs.length * 100;
+    document.getElementsByClassName("AlertPlace")[0].style.height = `${alertHeight}px`
   }
 
   removeAlert = () => {
     if (this.state.alertMsg.length > 0) {
       this.setState({alertMsg: []});
-      document.getElementsByClassName("AlertPlace")[0].classList.remove("AlertOpened");
-      document.getElementsByClassName("AlertPlace")[0].classList.add("AlertClosed");
+      document.getElementsByClassName("AlertPlace")[0].style.height = "0px";
     }
   }
 
